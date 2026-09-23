@@ -2,7 +2,7 @@
 
 # Sagar Tailor
 
-Computer Science & Engineering Student — AI/ML, Backend Development & Systems
+Computer Science & Engineering Student - AI/ML, Backend Development & Systems
 
 </div>
 
