@@ -1,252 +1,204 @@
 <div align="center">
 
-# Sagar Tailor
-
-### `AI/ML` · `Systems` · `Backend` · `Scientific Computing`
-
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=22&pause=1100&color=58A6FF&center=true&vCenter=true&width=850&lines=Building+systems%2C+not+just+projects.;AI+%C2%B7+Backend+%C2%B7+Systems+%C2%B7+Scientific+Computing;Turning+ideas+into+working+software.;Research.+Engineering.+Iteration." alt="Typing SVG" />
+<a href="https://github.com/slazyverse">
+  <img src="./assets/hero.gif" alt="Sagar Tailor — animated engineering banner" width="100%" />
+</a>
 
 <br/>
 
-<a href="https://github.com/slazyverse">
-<img src="https://img.shields.io/github/followers/slazyverse?label=Followers&style=flat-square&logo=github&color=21262d" alt="GitHub followers"/>
-</a>
-&nbsp;
-<a href="https://github.com/slazyverse?tab=repositories">
-<img src="https://img.shields.io/badge/Repositories-181717?style=flat-square&logo=github&logoColor=white" alt="Repositories"/>
-</a>
-&nbsp;
-<a href="https://sagar-tailor-portfolio.vercel.app/">
-<img src="https://img.shields.io/badge/Portfolio-58A6FF?style=flat-square&logo=vercel&logoColor=white" alt="Portfolio"/>
-</a>
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=20&duration=2600&pause=900&color=58A6FF&center=true&vCenter=true&width=900&lines=AI+%C2%B7+Systems+%C2%B7+Backend+%C2%B7+Scientific+Computing;Building+systems%2C+not+just+projects.;Research+%E2%86%92+Engineering+%E2%86%92+Iteration;Turning+ideas+into+working+software." alt="Typing introduction" />
+
+<br/>
+
+<a href="https://github.com/slazyverse"><img src="https://img.shields.io/badge/GitHub-111827?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
+<a href="https://sagar-tailor-portfolio.vercel.app/"><img src="https://img.shields.io/badge/Portfolio-0f172a?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
+<a href="https://www.linkedin.com/in/sagar-tailor-9a7646377/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
 
 </div>
 
----
+whoami
 
-## `whoami`
+I build software where AI, systems, data and real-world engineering overlap.
 
-I'm **Sagar Tailor**, a Computer Science & Engineering student focused on building software that sits somewhere between **AI, systems, data and real-world engineering**.
+I am most interested in the parts of a product that make it actually work: concurrency, data pipelines, model behavior, APIs, reproducibility, performance and the engineering decisions underneath the interface.
 
-I like projects that force me to understand what is happening underneath the interface:
-
-* how systems behave under concurrency
-* how data becomes a useful signal
-* how models interact with real applications
-* how scientific data can become an engineering product
-* how a prototype can evolve into something reproducible and maintainable
-
-I don't want my GitHub to be a collection of tutorials.
-
-**I want it to be a record of things I actually built, broke, researched and improved.**
-
----
+My GitHub is becoming a record of that process — build something real, understand it deeply, break it, improve it, ship it.
 
 <div align="center">
 
-### `BUILD → TEST → BREAK → UNDERSTAND → IMPROVE`
+BUILD → TEST → BREAK → UNDERSTAND → IMPROVE
 
 </div>
 
----
+<div align="center">
 
-## `current_stack`
+<img src="./assets/pointer-trace.gif" alt="Animated pointer trace" width="100%" />
 
-### Languages
+</div>
+
+what_i_build
+
+Area
+
+What I like working on
+
+AI / ML
+
+learning systems, predictive models, intelligent automation
+
+Backend
+
+APIs, data flows, real-time services, production-oriented architecture
+
+Systems
+
+concurrency, deadlocks, resource allocation, performance
+
+Scientific Computing
+
+satellite data, environmental analysis, reproducible workflows
+
+Web Engineering
+
+interactive interfaces, WebGL, data visualization, engineering portfolios
+
+stack
+
+Languages
 
 <img src="https://skillicons.dev/icons?i=python,go,typescript,javascript,cpp,c&theme=dark" height="48" />
 
-### AI / Data / Scientific Computing
-
-<img src="https://skillicons.dev/icons?i=python,pytorch&theme=dark" height="48" />
-
-`Machine Learning` · `Deep Learning` · `NumPy` · `Pandas` · `Scikit-learn`
-`Data Analysis` · `Scientific Computing` · `Remote Sensing` · `Geospatial Data`
-
-### Backend / Systems
+Backend / Systems
 
 <img src="https://skillicons.dev/icons?i=nodejs,express,nextjs,fastapi,docker,linux&theme=dark" height="48" />
 
-`REST APIs` · `WebSockets` · `Concurrency` · `System Design` · `Automation`
+REST APIs · WebSockets · Concurrency · System Design · Automation
 
-### Databases / Infrastructure
+AI / Data / Scientific Computing
 
-<img src="https://skillicons.dev/icons?i=mongodb,mysql,postgresql,git,github,docker&theme=dark" height="48" />
+<img src="https://skillicons.dev/icons?i=python,pytorch&theme=dark" height="48" />
 
----
+NumPy · Pandas · Scikit-learn · Machine Learning · Scientific Computing · Remote Sensing · Geospatial Data
 
-# `selected_work`
+Databases / Tooling
 
-> A few things that represent how I like to build.
+<img src="https://skillicons.dev/icons?i=mongodb,mysql,postgresql,git,github,vscode&theme=dark" height="48" />
 
-### ⛓️ deadlockd
+selected_work
 
-**High-performance Deadlock Simulation Toolkit & Concurrency Visualizer**
+⛓️ deadlockd
 
-A real-time system for understanding resource contention, deadlocks and safe-state evaluation through an interactive visual environment.
+High-performance deadlock simulation toolkit & concurrency visualizer.
 
-**Go · Next.js · TypeScript · WebSockets · Banker's Algorithm**
+A real-time system with a concurrent Go simulation engine, reactive Next.js frontend, WebSocket synchronization, Banker's Algorithm safety checks and live cycle detection.
 
-* Concurrent simulation engine written in Go
-* Real-time WebSocket state synchronization
-* Banker's Algorithm safety evaluation
-* Dynamic resource-allocation graph
-* Live deadlock-cycle detection
-* Interactive frontend for experimenting with system states
+Go · Next.js · TypeScript · WebSockets · Banker's Algorithm
 
-[→ Explore repository](https://github.com/slazyverse/deadlockd)
+Repository · Live Demo
 
----
+🌍 AKASH
 
-### 🌍 AKASH
+Atmospheric Knowledge — AQI from Satellite Harmonics.
 
-**Atmospheric Knowledge — AQI from Satellite Harmonics**
+A scientific-computing project around satellite-derived atmospheric analysis, environmental intelligence and large-scale data processing.
 
-A scientific-computing platform focused on satellite-derived atmospheric analysis and environmental intelligence.
+Python · Satellite Data · Remote Sensing · Data Analysis
 
-**Python · Data Engineering · Satellite Data · Remote Sensing · Machine Learning**
+Repository
 
-* Satellite-data processing pipeline
-* Atmospheric pollution analysis
-* Data collection and transformation workflows
-* Environmental intelligence and visualization
-* Backend + dashboard architecture
-* Reproducible engineering workflow
+🧬 Engineering Portfolio
 
-[→ Explore repository](https://github.com/slazyverse/AKASH-Atmospheric-Knowledge-AQI-from-Satellite-Harmonics-)
+The layer underneath.
 
----
+A portfolio built as an engineering experience rather than a conventional page — moving from surface interface toward the systems and substrate underneath it.
 
-### ⚙️ Engineering Portfolio
+Next.js 16 · TypeScript · Three.js · React Three Fiber · WebGL · anime.js
 
-**The layer underneath.**
+Repository · Live Portfolio
 
-A portfolio designed as an interactive engineering experience rather than a traditional personal website.
+📊 APIx — Collaborative Work
 
-**Next.js 16 · TypeScript · Three.js · React Three Fiber · WebGL · anime.js**
+A quality-adjusted, high-frequency airfare price-index project built around an auditable data and statistical pipeline. The current repository is maintained under Rexy-5097, so this profile intentionally labels it as collaborative rather than presenting it as an owned slazyverse repository.
 
-The idea is simple:
+Data Engineering · Statistical Computing · Reproducibility · Research Infrastructure
 
-**start at the interface → descend into the engine → reach the substrate.**
-
-The project explores how far a portfolio can go when the interface itself becomes an engineering demonstration.
-
-[→ Explore repository](https://github.com/slazyverse/portfolio)
-[→ Open portfolio](https://sagar-tailor-portfolio.vercel.app/)
-
----
-
-### 📊 APIx — Airfare Price Index
-
-**A research-oriented airfare price-index engineering system.**
-
-APIx explores the construction of a quality-adjusted, high-frequency airfare price index using an auditable data and statistical pipeline.
-
-**Python · Data Engineering · Statistical Computing · Reproducibility**
-
-The project is particularly interesting to me because it sits at the intersection of:
-
-`real-world data` → `measurement` → `statistics` → `software engineering`
-
-> APIx currently lives in a collaborative repository rather than under `slazyverse`; this section is intentionally presented as external/collaborative work rather than as an owned repository.
-
-[→ View APIx](https://github.com/Rexy-5097/APIX)
-
----
-
-## `what_i_like_building`
-
-```text
-AI systems              ███████████████████░  90%
-Backend engineering     ██████████████████░░  85%
-Systems & concurrency   █████████████████░░░  80%
-Scientific computing    ████████████████░░░░  75%
-Data engineering        ███████████████░░░░░  70%
-Frontend / WebGL        █████████████░░░░░░░  65%
-```
-
-Not everything needs to be an AI project.
-
-Sometimes the interesting problem is the **system underneath it**.
-
----
-
-## `engineering_interests`
-
-```text
-Artificial Intelligence
-Machine Learning
-Systems Engineering
-Backend Architecture
-Distributed / Concurrent Systems
-Scientific Computing
-Data Engineering
-Satellite & Geospatial Data
-Automation
-Developer Tooling
-Reproducible Research
-```
-
----
-
-## `github_activity`
+APIx Repository
 
 <div align="center">
 
-<img src="https://github-readme-stats-fast.vercel.app/api?username=slazyverse&show_icons=true&theme=github_dark_dimmed&hide_border=true&include_all_commits=true" height="170" />
-
-<img src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=slazyverse&layout=compact&theme=github_dark_dimmed&hide_border=true&langs_count=8" height="170" />
+<img src="./assets/car-orbit.gif" alt="Animated suspended car orbiting a system core" width="100%" />
 
 </div>
 
-<br/>
+engineering_mindset
+
+I like the uncomfortable part.
+
+The race condition nobody noticed.
+The dataset that doesn't fit the clean assumption.
+The model that looks right until you test it.
+The API that works in development but fails under load.
+The interface that becomes better only after you understand the system beneath it.
+
+That's usually where the interesting engineering starts.
 
 <div align="center">
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=slazyverse&theme=github-compact&hide_border=true&area=true" width="95%" />
+<img src="./assets/data-flow.gif" alt="Animated real-time data pipeline" width="100%" />
 
 </div>
 
----
+currently
 
-## `currently`
-
-```text
-→ strengthening DSA & systems fundamentals
+→ strengthening DSA and systems fundamentals
+→ going deeper into machine learning and scientific computing
 → building production-oriented backend systems
-→ going deeper into AI/ML
-→ exploring scientific & geospatial computing
-→ turning experiments into reproducible software
-```
+→ exploring real-time and concurrent architectures
+→ turning experiments into reproducible engineering projects
 
----
-
-## `connect`
+github_activity
 
 <div align="center">
 
-<a href="https://github.com/slazyverse">
-<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
-</a>
-
-<a href="https://www.linkedin.com/in/sagar-tailor-9a7646377/">
-<img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
-</a>
-
-<a href="https://sagar-tailor-portfolio.vercel.app/">
-<img src="https://img.shields.io/badge/Portfolio-111111?style=for-the-badge&logo=vercel&logoColor=white" />
-</a>
-
-</div>
-
----
-
-<div align="center">
-
-### `I build. I research. I iterate.`
+<img src="https://github-readme-stats-fast.vercel.app/api?username=slazyverse&show_icons=true&include_all_commits=true&theme=github_dark_dimmed&hide_border=true" height="165" alt="GitHub statistics" />
+<img src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=slazyverse&layout=compact&langs_count=8&theme=github_dark_dimmed&hide_border=true" height="165" alt="Top languages" />
 
 <br/>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:161b22,100:21262d&height=120&section=footer" width="100%" />
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=slazyverse&theme=github-compact&hide_border=true&area=true" width="95%" alt="GitHub activity graph" />
 
 </div>
+
+contributions_in_motion
+
+<div align="center">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./dist/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="./dist/github-snake.svg" />
+  <img src="./dist/github-snake.svg" alt="Animated contribution snake" width="100%" />
+</picture>
+
+</div>
+
+connect
+
+<div align="center">
+
+<a href="https://github.com/slazyverse">GitHub</a> ·
+<a href="https://www.linkedin.com/in/sagar-tailor-9a7646377/">LinkedIn</a> ·
+<a href="https://sagar-tailor-portfolio.vercel.app/">Portfolio</a>
+
+<br/><br/>
+
+<img src="./assets/footer.gif" alt="Animated footer" width="100%" />
+
+I build. I research. I iterate.
+
+</div>
+
+<!--
+This profile intentionally keeps the motion autonomous and GitHub-safe.
+True cursor-reactive and scroll-progress animation belongs on the interactive portfolio:
+https://sagar-tailor-portfolio.vercel.app/
+-->
