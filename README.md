@@ -1,6 +1,6 @@
 <div align="center">
 
-SAGAR TAILOR
+<h1>SAGAR TAILOR</h1>
 
 Computer Science & Engineering · AI/ML · Backend · Systems
 
