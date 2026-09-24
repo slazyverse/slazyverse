@@ -1,100 +1,84 @@
 <div align="center">
 
-Sagar Tailor
+SAGAR TAILOR
 
 Computer Science & Engineering · AI/ML · Backend · Systems
 
+<img src="./assets/hero.gif" alt="Animated Sagar Tailor engineering hero" width="100%" />
+
 <p>
-  <a href="https://github.com/slazyverse">
-    <img src="https://img.shields.io/badge/GitHub-slazyverse-0d1117?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
-  </a>
-  <a href="https://sagar-tailor-portfolio.vercel.app/">
-    <img src="https://img.shields.io/badge/Portfolio-0d1117?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" />
-  </a>
-  <a href="https://www.linkedin.com/in/sagar-tailor-9a7646377/">
-    <img src="https://img.shields.io/badge/LinkedIn-0d1117?style=for-the-badge&logo=linkedin&logoColor=0A66C2" alt="LinkedIn" />
-  </a>
+  <a href="https://github.com/slazyverse"><img src="https://img.shields.io/badge/GitHub-slazyverse-0d1117?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
+  <a href="https://sagar-tailor-portfolio.vercel.app/"><img src="https://img.shields.io/badge/Portfolio-0d1117?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
+  <a href="https://www.linkedin.com/in/sagar-tailor-9a7646377/"><img src="https://img.shields.io/badge/LinkedIn-0d1117?style=for-the-badge&logo=linkedin&logoColor=0A66C2" alt="LinkedIn" /></a>
 </p>
 
-</div>
-
-<div align="center">
-
-<img src="./assets/hero.gif" alt="Sagar Tailor animated engineering banner" width="100%" />
+BUILD · RESEARCH · ITERATE
 
 </div>
 
-Hey, I'm Sagar 👋
+About Me
 
-I'm a Computer Science & Engineering student at Lovely Professional University who enjoys building practical software where AI, systems, data and engineering meet.
+I'm Sagar Tailor, a Computer Science & Engineering student focused on AI/ML, backend engineering, systems and scientific computing.
 
-I like the part after the idea: collecting messy data, designing the backend, testing the assumptions, understanding the failure modes, and turning the whole thing into software that can actually run.
+I enjoy the part of a project that sits underneath the interface: data pipelines, model behaviour, APIs, concurrency, system architecture and the engineering decisions that make a prototype dependable.
 
-My GitHub is a workbench — not a list of buzzwords.
+My GitHub is where I keep that work visible — real repositories, real experiments, and projects I can explain from the inside out.
 
-<div align="center">
+What I'm Building Around
 
-IDEA → BUILD → TEST → BREAK → UNDERSTAND → IMPROVE
+Area
 
-</div>
-
-Current Focus
-
-
-
-
+Focus
 
 🤖 AI / ML
 
-Machine learning, intelligent automation, model-driven applications
+Machine learning, intelligent systems, model-driven applications
 
-⚙️ Backend & Systems
+⚙️ Backend / Systems
 
-APIs, real-time services, concurrency, system behaviour
+APIs, real-time services, concurrency, architecture
 
 🌍 Scientific Computing
 
-Satellite data, environmental analysis, reproducible pipelines
+Satellite data, environmental analysis, reproducible workflows
 
 🧩 Software Engineering
 
-Architecture, tooling, performance, maintainability
+Performance, maintainability, tooling, problem solving
 
 <div align="center">
-
-<img src="./assets/scroll-layers.gif" alt="Animated scroll and depth divider" width="100%" />
-
+<img src="./assets/pointer-signal.gif" alt="Animated signal path" width="100%" />
 </div>
 
 Tech Stack
 
 Languages
 
-<img src="https://skillicons.dev/icons?i=python,go,typescript,javascript,cpp,c&theme=dark" height="48" alt="Languages" />
+<img src="https://skillicons.dev/icons?i=python,go,typescript,javascript,cpp,c&theme=dark" height="46" alt="Languages" />
 
 Backend · Systems · DevOps
 
-<img src="https://skillicons.dev/icons?i=nodejs,express,nextjs,fastapi,docker,linux,git,github&theme=dark" height="48" alt="Backend and infrastructure" />
+<img src="https://skillicons.dev/icons?i=nodejs,express,nextjs,fastapi,docker,linux,git,github&theme=dark" height="46" alt="Backend and infrastructure" />
 
 REST APIs · WebSockets · Concurrency · System Design · Automation
 
 AI · Data · Scientific Computing
 
-<img src="https://skillicons.dev/icons?i=python,pytorch&theme=dark" height="48" alt="AI and machine learning" />
+<img src="https://skillicons.dev/icons?i=pytorch&theme=dark" height="46" alt="PyTorch" />
 
-NumPy · Pandas · Scikit-learn · Machine Learning · Deep Learning · Remote Sensing · Geospatial Data
+NumPy · Pandas · Scikit-learn · Machine Learning · Deep Learning · Remote Sensing
 
 Databases
 
-<img src="https://skillicons.dev/icons?i=mongodb,mysql,postgresql&theme=dark" height="48" alt="Databases" />
+<img src="https://skillicons.dev/icons?i=mongodb,mysql,postgresql&theme=dark" height="46" alt="Databases" />
 
-What I Build
+Selected Work
 
 ⛓️ deadlockd
 
 Real-time deadlock simulation & concurrency visualizer.
 
-A systems project built around a concurrent Go simulation engine and an interactive Next.js interface. It explores resource allocation, deadlock detection, safety evaluation and real-time state updates.
+A systems project with a concurrent Go engine and an interactive Next.js interface for exploring resource allocation, deadlock detection, safety evaluation and live state updates.
 
 Go · Next.js · TypeScript · WebSockets · Banker's Algorithm
 
@@ -114,70 +98,54 @@ Repository: https://github.com/slazyverse/AKASH-Atmospheric-Knowledge-AQI-from-S
 
 The layer underneath.
 
-A portfolio designed as an interactive engineering experience rather than a conventional personal website — moving from the visible product surface toward the systems beneath it.
+An interactive engineering portfolio built to move from the visible product surface into the systems underneath it.
 
 Next.js 16 · TypeScript · Three.js · React Three Fiber · WebGL
 
 Repository: https://github.com/slazyverse/portfolio
 Live: https://sagar-tailor-portfolio.vercel.app/
 
-<div align="center">
-
-<img src="./assets/pointer-signal.gif" alt="Animated pointer signal" width="100%" />
-
-</div>
-
 Collaborative Work
 
 ✈️ APIx — Airfare Price Index
 
-A quality-adjusted, high-frequency airfare price-index engineering project built around a real-market evidence pipeline and an auditable statistical architecture.
+A quality-adjusted, high-frequency airfare price-index engineering project built around a real-market evidence pipeline and auditable statistical architecture.
 
-I keep this section explicitly collaborative/external because the repository currently lives at Rexy-5097/APIX, not under slazyverse.
+I am keeping this explicitly under Collaborative Work because the repository currently lives at Rexy-5097/APIX, not under slazyverse.
 
 Python · Data Engineering · Statistical Computing · Research Infrastructure
 
 Repository: https://github.com/Rexy-5097/APIX
 
 <div align="center">
-
 <img src="./assets/car-orbit.gif" alt="Animated car orbiting a systems core" width="100%" />
-
 </div>
 
 Engineering Personality
 
-I tend to enjoy problems that have a layer underneath the obvious one.
+I like problems where the obvious layer is not the interesting one.
 
 A race condition nobody noticed.
-A dataset that refuses the clean assumption.
+A dataset that rejects the clean assumption.
 A model that looks correct until you test it.
-An API that works locally but fails under pressure.
+An API that works locally but breaks under pressure.
 An interface that becomes better after understanding the system beneath it.
 
 That is usually where I want to dig deeper.
 
 <div align="center">
-
 <img src="./assets/data-flow.gif" alt="Animated data pipeline" width="100%" />
-
 </div>
 
 Currently
 
-→ strengthening DSA and systems fundamentals
-→ going deeper into AI / ML
-→ building production-oriented backend systems
-→ exploring real-time and concurrent architectures
-→ working with scientific and geospatial data
-→ turning experiments into reproducible engineering projects
+DSA · AI / ML · Backend Systems · Real-Time Architecture · Scientific & Geospatial Data
 
 GitHub Activity
 
 <div align="center">
 
 <img src="https://github-readme-stats-fast.vercel.app/api?username=slazyverse&show_icons=true&include_all_commits=true&theme=github_dark_dimmed&hide_border=true" height="165" alt="GitHub statistics" />
-
 <img src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=slazyverse&layout=compact&langs_count=8&theme=github_dark_dimmed&hide_border=true" height="165" alt="Top languages" />
 
 <br/>
@@ -208,15 +176,8 @@ Connect
 
 <br/><br/>
 
-<img src="./assets/footer.gif" alt="Animated build research iterate footer" width="100%" />
+<img src="./assets/footer.gif" alt="Animated footer" width="100%" />
 
 Build. Research. Iterate.
 
 </div>
-
-<!--
-GitHub-safe motion:
-- GIFs provide visible autonomous motion while the README stays lightweight.
-- GitHub profile READMEs do not expose page-level JavaScript, so true pointer and
-  scroll-position events belong on the interactive portfolio, not inside this README.
--->
