@@ -2,195 +2,251 @@
 
 # Sagar Tailor
 
-Computer Science & Engineering Student - AI/ML, Backend Development & Systems
+### `AI/ML` · `Systems` · `Backend` · `Scientific Computing`
+
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=22&pause=1100&color=58A6FF&center=true&vCenter=true&width=850&lines=Building+systems%2C+not+just+projects.;AI+%C2%B7+Backend+%C2%B7+Systems+%C2%B7+Scientific+Computing;Turning+ideas+into+working+software.;Research.+Engineering.+Iteration." alt="Typing SVG" />
+
+<br/>
+
+<a href="https://github.com/slazyverse">
+<img src="https://img.shields.io/github/followers/slazyverse?label=Followers&style=flat-square&logo=github&color=21262d" alt="GitHub followers"/>
+</a>
+&nbsp;
+<a href="https://github.com/slazyverse?tab=repositories">
+<img src="https://img.shields.io/badge/Repositories-181717?style=flat-square&logo=github&logoColor=white" alt="Repositories"/>
+</a>
+&nbsp;
+<a href="https://sagar-tailor-portfolio.vercel.app/">
+<img src="https://img.shields.io/badge/Portfolio-58A6FF?style=flat-square&logo=vercel&logoColor=white" alt="Portfolio"/>
+</a>
+
+</div>
+
+---
+
+## `whoami`
+
+I'm **Sagar Tailor**, a Computer Science & Engineering student focused on building software that sits somewhere between **AI, systems, data and real-world engineering**.
+
+I like projects that force me to understand what is happening underneath the interface:
+
+* how systems behave under concurrency
+* how data becomes a useful signal
+* how models interact with real applications
+* how scientific data can become an engineering product
+* how a prototype can evolve into something reproducible and maintainable
+
+I don't want my GitHub to be a collection of tutorials.
+
+**I want it to be a record of things I actually built, broke, researched and improved.**
+
+---
+
+<div align="center">
+
+### `BUILD → TEST → BREAK → UNDERSTAND → IMPROVE`
+
+</div>
+
+---
+
+## `current_stack`
+
+### Languages
+
+<img src="https://skillicons.dev/icons?i=python,go,typescript,javascript,cpp,c&theme=dark" height="48" />
+
+### AI / Data / Scientific Computing
+
+<img src="https://skillicons.dev/icons?i=python,pytorch&theme=dark" height="48" />
+
+`Machine Learning` · `Deep Learning` · `NumPy` · `Pandas` · `Scikit-learn`
+`Data Analysis` · `Scientific Computing` · `Remote Sensing` · `Geospatial Data`
+
+### Backend / Systems
+
+<img src="https://skillicons.dev/icons?i=nodejs,express,nextjs,fastapi,docker,linux&theme=dark" height="48" />
+
+`REST APIs` · `WebSockets` · `Concurrency` · `System Design` · `Automation`
+
+### Databases / Infrastructure
+
+<img src="https://skillicons.dev/icons?i=mongodb,mysql,postgresql,git,github,docker&theme=dark" height="48" />
+
+---
+
+# `selected_work`
+
+> A few things that represent how I like to build.
+
+### ⛓️ deadlockd
+
+**High-performance Deadlock Simulation Toolkit & Concurrency Visualizer**
+
+A real-time system for understanding resource contention, deadlocks and safe-state evaluation through an interactive visual environment.
+
+**Go · Next.js · TypeScript · WebSockets · Banker's Algorithm**
+
+* Concurrent simulation engine written in Go
+* Real-time WebSocket state synchronization
+* Banker's Algorithm safety evaluation
+* Dynamic resource-allocation graph
+* Live deadlock-cycle detection
+* Interactive frontend for experimenting with system states
+
+[→ Explore repository](https://github.com/slazyverse/deadlockd)
+
+---
+
+### 🌍 AKASH
+
+**Atmospheric Knowledge — AQI from Satellite Harmonics**
+
+A scientific-computing platform focused on satellite-derived atmospheric analysis and environmental intelligence.
+
+**Python · Data Engineering · Satellite Data · Remote Sensing · Machine Learning**
+
+* Satellite-data processing pipeline
+* Atmospheric pollution analysis
+* Data collection and transformation workflows
+* Environmental intelligence and visualization
+* Backend + dashboard architecture
+* Reproducible engineering workflow
+
+[→ Explore repository](https://github.com/slazyverse/AKASH-Atmospheric-Knowledge-AQI-from-Satellite-Harmonics-)
+
+---
+
+### ⚙️ Engineering Portfolio
+
+**The layer underneath.**
+
+A portfolio designed as an interactive engineering experience rather than a traditional personal website.
+
+**Next.js 16 · TypeScript · Three.js · React Three Fiber · WebGL · anime.js**
+
+The idea is simple:
+
+**start at the interface → descend into the engine → reach the substrate.**
+
+The project explores how far a portfolio can go when the interface itself becomes an engineering demonstration.
+
+[→ Explore repository](https://github.com/slazyverse/portfolio)
+[→ Open portfolio](https://sagar-tailor-portfolio.vercel.app/)
+
+---
+
+### 📊 APIx — Airfare Price Index
+
+**A research-oriented airfare price-index engineering system.**
+
+APIx explores the construction of a quality-adjusted, high-frequency airfare price index using an auditable data and statistical pipeline.
+
+**Python · Data Engineering · Statistical Computing · Reproducibility**
+
+The project is particularly interesting to me because it sits at the intersection of:
+
+`real-world data` → `measurement` → `statistics` → `software engineering`
+
+> APIx currently lives in a collaborative repository rather than under `slazyverse`; this section is intentionally presented as external/collaborative work rather than as an owned repository.
+
+[→ View APIx](https://github.com/Rexy-5097/APIX)
+
+---
+
+## `what_i_like_building`
+
+```text
+AI systems              ███████████████████░  90%
+Backend engineering     ██████████████████░░  85%
+Systems & concurrency   █████████████████░░░  80%
+Scientific computing    ████████████████░░░░  75%
+Data engineering        ███████████████░░░░░  70%
+Frontend / WebGL        █████████████░░░░░░░  65%
+```
+
+Not everything needs to be an AI project.
+
+Sometimes the interesting problem is the **system underneath it**.
+
+---
+
+## `engineering_interests`
+
+```text
+Artificial Intelligence
+Machine Learning
+Systems Engineering
+Backend Architecture
+Distributed / Concurrent Systems
+Scientific Computing
+Data Engineering
+Satellite & Geospatial Data
+Automation
+Developer Tooling
+Reproducible Research
+```
+
+---
+
+## `github_activity`
+
+<div align="center">
+
+<img src="https://github-readme-stats-fast.vercel.app/api?username=slazyverse&show_icons=true&theme=github_dark_dimmed&hide_border=true&include_all_commits=true" height="170" />
+
+<img src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=slazyverse&layout=compact&theme=github_dark_dimmed&hide_border=true&langs_count=8" height="170" />
 
 </div>
 
 <br/>
 
-I am a **Computer Science & Engineering student at Lovely Professional University**, interested in building practical software, AI/ML systems, and technology-driven solutions to real-world problems.
-
-My work spans **machine learning, backend development, system optimization, scientific computing, and data-driven applications**. I enjoy taking projects from an initial idea to a working implementation — collecting and processing data, training models, building applications around them, and evaluating the results.
-
-Currently, I am focused on strengthening my skills in **Artificial Intelligence, Machine Learning, backend systems, automation, scientific computing, and software engineering**.
-
 <div align="center">
 
-[Current Focus](#current-focus) · [Tech Stack](#tech-stack) · [Selected Projects](#selected-projects) · [Research Interests](#research-interests) · [Currently Learning](#currently-learning) · [Connect](#connect)
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=slazyverse&theme=github-compact&hide_border=true&area=true" width="95%" />
 
 </div>
 
 ---
 
-## Current Focus
+## `currently`
 
-| Artificial Intelligence | Machine Learning | Backend Development |
-| ----------------------- | ---------------- | ------------------- |
-| Python Development      | Data Analysis    | System Optimization |
-| Scientific Computing    | Automation       | Problem Solving     |
-
----
-
-## Tech Stack
-
-### Languages
-
-<img src="https://skillicons.dev/icons?i=python,go,typescript,js&theme=dark" alt="Languages" height="48"/>
-
-### Backend & Development
-
-<img src="https://skillicons.dev/icons?i=nodejs,express,nextjs&theme=dark" alt="Backend Development" height="48"/>
-
-![REST APIs](https://img.shields.io/badge/REST%20APIs-1f2328?style=flat-square)
-![Backend Development](https://img.shields.io/badge/Backend%20Development-1f2328?style=flat-square)
-![System Design](https://img.shields.io/badge/System%20Design-1f2328?style=flat-square)
-
-### Databases & Data
-
-<img src="https://skillicons.dev/icons?i=mongodb,mysql,oracle&theme=dark" alt="Databases" height="48"/>
-
-![Data Analysis](https://img.shields.io/badge/Data%20Analysis-1f2328?style=flat-square)
-![Scientific Computing](https://img.shields.io/badge/Scientific%20Computing-1f2328?style=flat-square)
-![Geospatial Data](https://img.shields.io/badge/Geospatial%20Data-1f2328?style=flat-square)
-
-### AI & Machine Learning
-
-<img src="https://skillicons.dev/icons?i=python,pytorch&theme=dark" alt="AI and Machine Learning" height="48"/>
-
-![Machine Learning](https://img.shields.io/badge/Machine%20Learning-1f2328?style=flat-square)
-![Deep Learning](https://img.shields.io/badge/Deep%20Learning-1f2328?style=flat-square)
-![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1f2328?style=flat-square)
-![Pandas](https://img.shields.io/badge/Pandas-1f2328?style=flat-square)
-![NumPy](https://img.shields.io/badge/NumPy-1f2328?style=flat-square)
-
-### Tools & Infrastructure
-
-<img src="https://skillicons.dev/icons?i=git,github,vscode,docker,linux&theme=dark" alt="Tools and Infrastructure" height="48"/>
+```text
+→ strengthening DSA & systems fundamentals
+→ building production-oriented backend systems
+→ going deeper into AI/ML
+→ exploring scientific & geospatial computing
+→ turning experiments into reproducible software
+```
 
 ---
 
-## Selected Projects
-
-### **YottaBoost AI — Smart Windows Optimizer**
-
-An AI-powered Windows optimization project designed to monitor system performance and predict potential slowdowns, particularly on low-end hardware.
-
-**Python · Pandas · NumPy · Scikit-learn · Random Forest · Joblib**
-
-* Collects real-time CPU and RAM utilization data for system-performance analysis.
-* Uses machine learning to classify potential system slowdowns based on resource utilization.
-* Trains a Random Forest classification model using collected system-monitoring data.
-* Includes model evaluation and prediction functionality.
-* Designed with low-end systems in mind, where efficient resource management can significantly improve usability.
-
----
-
-### **Surface AQI & HCHO Hotspot Detection Using Satellite Data**
-
-A scientific computing project focused on monitoring air pollution over India using satellite observations and identifying regions with elevated formaldehyde (HCHO) concentrations.
-
-**Python · Satellite Data · Remote Sensing · Machine Learning · Data Analysis**
-
-* Develops a satellite-data-based approach for estimating surface-level air-quality indicators.
-* Studies atmospheric pollutants and their relationship with air-quality conditions across India.
-* Uses HCHO observations to identify and analyze potential pollution hotspots.
-* Applies data processing, spatial analysis, and visualization techniques to large-scale environmental datasets.
-* Designed as a scientific and engineering workflow for satellite-based environmental monitoring.
-
----
-
-### **AI-Based System Performance Prediction**
-
-A machine-learning workflow for analyzing computer resource utilization and predicting performance degradation.
-
-**Python · Scikit-learn · Pandas · Matplotlib**
-
-* Processes CPU and RAM monitoring data collected from Windows systems.
-* Creates labeled datasets for supervised machine-learning experiments.
-* Uses classification techniques to identify high-resource-utilization states.
-* Evaluates model performance using accuracy and classification metrics.
-* Provides a foundation for integrating predictive intelligence into system-optimization software.
-
----
-
-### **SLAZY Gaming & Esports Platform**
-
-A gaming and esports-focused initiative involving tournament organization, team management, community building, and competitive gaming operations.
-
-**Esports · Community Management · Tournament Management · Digital Branding**
-
-* Worked on organizing competitive gaming tournaments and community activities.
-* Developed structures for player and team management.
-* Built branding concepts and digital assets for gaming communities.
-* Explored esports coaching, team coordination, player rotation, and competitive strategy.
-
----
-
-### **Engineering Portfolio**
-
-A personal engineering portfolio designed around an interactive, system-focused visual experience.
-
-**Next.js · TypeScript · WebGL**
-
-* Built as an engineering-focused personal portfolio.
-* Uses a scroll-driven experience to explore the layers underneath a software product.
-* Demonstrates modern frontend engineering and interactive web technologies.
-
----
-
-## Research Interests
-
-* Artificial Intelligence and Machine Learning
-* Backend Development and Software Engineering
-* System Performance Optimization
-* Scientific Machine Learning
-* Satellite Data and Remote Sensing
-* Environmental Data Analysis
-* Predictive Analytics
-* Automation and Intelligent Systems
-* Data-Driven Problem Solving
-
----
-
-## Currently Learning
-
-* Advanced Python
-* Data Structures & Algorithms
-* Machine Learning
-* Deep Learning
-* Backend Development
-* Database Systems
-* System Design
-* Cloud & DevOps Fundamentals
-* Scientific Computing
-* Geospatial Data Processing
-
----
-
-## GitHub Statistics
-
-<div align="center">
-
-<img src="https://github-readme-stats-fast.vercel.app/api?username=slazyverse&show_icons=true&theme=github_dark_dimmed&hide_border=true&count_private=true" alt="GitHub Stats" height="165"/>
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=slazyverse&theme=github-compact&hide_border=true" alt="Contribution Graph" width="95%"/>
-
-</div>
-
----
-
-## Connect
+## `connect`
 
 <div align="center">
 
 <a href="https://github.com/slazyverse">
-  <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub"/>
+<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
+</a>
+
+<a href="https://www.linkedin.com/in/sagar-tailor-9a7646377/">
+<img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
+</a>
+
+<a href="https://sagar-tailor-portfolio.vercel.app/">
+<img src="https://img.shields.io/badge/Portfolio-111111?style=for-the-badge&logo=vercel&logoColor=white" />
 </a>
 
 </div>
 
+---
+
 <div align="center">
 
-### Build. Research. Optimize. Innovate.
+### `I build. I research. I iterate.`
+
+<br/>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:161b22,100:21262d&height=120&section=footer" width="100%" />
 
 </div>
