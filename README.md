@@ -1,183 +1,322 @@
-<div align="center">
-
-<h1>SAGAR TAILOR</h1>
-
-Computer Science & Engineering · AI/ML · Backend · Systems
-
-<img src="./assets/hero.gif" alt="Animated Sagar Tailor engineering hero" width="100%" />
-
-<p>
-  <a href="https://github.com/slazyverse"><img src="https://img.shields.io/badge/GitHub-slazyverse-0d1117?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
-  <a href="https://sagar-tailor-portfolio.vercel.app/"><img src="https://img.shields.io/badge/Portfolio-0d1117?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
-  <a href="https://www.linkedin.com/in/sagar-tailor-9a7646377/"><img src="https://img.shields.io/badge/LinkedIn-0d1117?style=for-the-badge&logo=linkedin&logoColor=0A66C2" alt="LinkedIn" /></a>
-</p>
-
-BUILD · RESEARCH · ITERATE
-
-</div>
-
-About Me
-
-I'm Sagar Tailor, a Computer Science & Engineering student focused on AI/ML, backend engineering, systems and scientific computing.
-
-I enjoy the part of a project that sits underneath the interface: data pipelines, model behaviour, APIs, concurrency, system architecture and the engineering decisions that make a prototype dependable.
-
-My GitHub is where I keep that work visible — real repositories, real experiments, and projects I can explain from the inside out.
-
-What I'm Building Around
-
-Area
-
-Focus
-
-🤖 AI / ML
-
-Machine learning, intelligent systems, model-driven applications
-
-⚙️ Backend / Systems
-
-APIs, real-time services, concurrency, architecture
-
-🌍 Scientific Computing
-
-Satellite data, environmental analysis, reproducible workflows
-
-🧩 Software Engineering
-
-Performance, maintainability, tooling, problem solving
+<!-- =============================================================== -->
+<!-- SAGAR TAILOR — GITHUB PROFILE README                          -->
+<!-- =============================================================== -->
 
 <div align="center">
-<img src="./assets/pointer-signal.gif" alt="Animated signal path" width="100%" />
-</div>
-
-Tech Stack
-
-Languages
-
-<img src="https://skillicons.dev/icons?i=python,go,typescript,javascript,cpp,c&theme=dark" height="46" alt="Languages" />
-
-Backend · Systems · DevOps
-
-<img src="https://skillicons.dev/icons?i=nodejs,express,nextjs,fastapi,docker,linux,git,github&theme=dark" height="46" alt="Backend and infrastructure" />
-
-REST APIs · WebSockets · Concurrency · System Design · Automation
-
-AI · Data · Scientific Computing
-
-<img src="https://skillicons.dev/icons?i=pytorch&theme=dark" height="46" alt="PyTorch" />
-
-NumPy · Pandas · Scikit-learn · Machine Learning · Deep Learning · Remote Sensing
-
-Databases
-
-<img src="https://skillicons.dev/icons?i=mongodb,mysql,postgresql&theme=dark" height="46" alt="Databases" />
-
-Selected Work
-
-⛓️ deadlockd
-
-Real-time deadlock simulation & concurrency visualizer.
-
-A systems project with a concurrent Go engine and an interactive Next.js interface for exploring resource allocation, deadlock detection, safety evaluation and live state updates.
-
-Go · Next.js · TypeScript · WebSockets · Banker's Algorithm
-
-Repository: https://github.com/slazyverse/deadlockd
-
-🌍 AKASH
-
-Atmospheric Knowledge — AQI from Satellite Harmonics.
-
-A scientific-computing workflow focused on satellite-derived atmospheric analysis, environmental data and engineering pipelines for large datasets.
-
-Python · Satellite Data · Remote Sensing · Data Analysis
-
-Repository: https://github.com/slazyverse/AKASH-Atmospheric-Knowledge-AQI-from-Satellite-Harmonics-
-
-🧬 Engineering Portfolio
-
-The layer underneath.
-
-An interactive engineering portfolio built to move from the visible product surface into the systems underneath it.
-
-Next.js 16 · TypeScript · Three.js · React Three Fiber · WebGL
-
-Repository: https://github.com/slazyverse/portfolio
-Live: https://sagar-tailor-portfolio.vercel.app/
-
-Collaborative Work
-
-✈️ APIx — Airfare Price Index
-
-A quality-adjusted, high-frequency airfare price-index engineering project built around a real-market evidence pipeline and auditable statistical architecture.
-
-I am keeping this explicitly under Collaborative Work because the repository currently lives at Rexy-5097/APIX, not under slazyverse.
-
-Python · Data Engineering · Statistical Computing · Research Infrastructure
-
-Repository: https://github.com/Rexy-5097/APIX
-
-<div align="center">
-<img src="./assets/car-orbit.gif" alt="Animated car orbiting a systems core" width="100%" />
-</div>
-
-Engineering Personality
-
-I like problems where the obvious layer is not the interesting one.
-
-A race condition nobody noticed.
-A dataset that rejects the clean assumption.
-A model that looks correct until you test it.
-An API that works locally but breaks under pressure.
-An interface that becomes better after understanding the system beneath it.
-
-That is usually where I want to dig deeper.
-
-<div align="center">
-<img src="./assets/data-flow.gif" alt="Animated data pipeline" width="100%" />
-</div>
-
-Currently
-
-DSA · AI / ML · Backend Systems · Real-Time Architecture · Scientific & Geospatial Data
-
-GitHub Activity
-
-<div align="center">
-
-<img src="https://github-readme-stats-fast.vercel.app/api?username=slazyverse&show_icons=true&include_all_commits=true&theme=github_dark_dimmed&hide_border=true" height="165" alt="GitHub statistics" />
-<img src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=slazyverse&layout=compact&langs_count=8&theme=github_dark_dimmed&hide_border=true" height="165" alt="Top languages" />
 
 <br/>
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=slazyverse&theme=github-compact&hide_border=true&area=true" width="95%" alt="GitHub activity graph" />
+# SAGAR TAILOR
+
+### Computer Science & Engineering · AI/ML · Backend · Systems
+
+<a href="https://github.com/slazyverse">
+  <img src="https://img.shields.io/badge/GITHUB-slazyverse-0d1117?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
+</a>
+&nbsp;
+<a href="https://sagar-tailor-portfolio.vercel.app/">
+  <img src="https://img.shields.io/badge/PORTFOLIO-0d1117?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio"/>
+</a>
+&nbsp;
+<a href="https://www.linkedin.com/in/sagar-tailor-9a7646377/">
+  <img src="https://img.shields.io/badge/LINKEDIN-0d1117?style=for-the-badge&logo=linkedin&logoColor=0A66C2" alt="LinkedIn"/>
+</a>
+
+<br/>
+<br/>
+
+<a href="https://git.io/typing-svg">
+  <img src="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&size=20&pause=1200&color=7EE7FF&center=true&vCenter=true&width=900&height=50&lines=Building+systems%2C+not+just+screens.;AI+%C2%B7+Backend+%C2%B7+Systems+%C2%B7+Scientific+Computing;Turning+messy+data+into+working+software.;Build+%E2%86%92+Research+%E2%86%92+Break+%E2%86%92+Understand+%E2%86%92+Improve" alt="Animated typing introduction"/>
+</a>
+
+<br/>
+
+<img src="./assets/hero-system.svg"
+     alt="Animated engineering system with particles, orbit and status signals"
+     width="100%"/>
+
+<br/>
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:58A6FF,50:7EE7FF,100:A78BFA&height=7&section=header&animation=twinkling"
+     width="100%"
+     alt="Animated separator"/>
 
 </div>
 
-Contributions in Motion
+## `whoami`
+
+I'm **Sagar Tailor**, a Computer Science & Engineering student building around **AI/ML, backend engineering, systems and scientific computing**.
+
+I am most interested in the part of a product that sits underneath the interface — the data pipeline, the model, the API, the concurrent process, the architecture, the failure mode, and the engineering decisions that make a prototype dependable.
+
+My GitHub is meant to show that progression through **actual repositories, experiments and systems I can explain from the inside out.**
+
+<br/>
+
+<img src="./assets/section-divider.svg"
+     width="100%"
+     alt="Animated section divider"/>
+
+## `what_i_build`
+
+<table>
+<tr>
+<td width="25%" align="center">
+
+### 🤖
+**AI / ML**
+
+Machine learning  
+Intelligent systems  
+Prediction  
+Data-driven applications
+
+</td>
+<td width="25%" align="center">
+
+### ⚙️
+**BACKEND**
+
+APIs  
+Real-time services  
+Architecture  
+Automation
+
+</td>
+<td width="25%" align="center">
+
+### 🧠
+**SYSTEMS**
+
+Concurrency  
+Resource allocation  
+Performance  
+Reliability
+
+</td>
+<td width="25%" align="center">
+
+### 🌍
+**SCIENTIFIC**
+
+Satellite data  
+Environmental analysis  
+Scientific workflows  
+Data processing
+
+</td>
+</tr>
+</table>
+
+<br/>
 
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./dist/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="./dist/github-snake.svg" />
-  <img src="./dist/github-snake.svg" alt="Animated contribution snake" width="100%" />
-</picture>
+`OBSERVE` &nbsp;→&nbsp; `MODEL` &nbsp;→&nbsp; `ENGINEER` &nbsp;→&nbsp; `VALIDATE` &nbsp;→&nbsp; `SHIP`
 
 </div>
 
-Connect
+<img src="./assets/section-divider.svg"
+     width="100%"
+     alt="Animated section divider"/>
+
+## `stack`
+
+### Languages
 
 <div align="center">
 
-<a href="https://github.com/slazyverse">GitHub</a> ·
-<a href="https://www.linkedin.com/in/sagar-tailor-9a7646377/">LinkedIn</a> ·
-<a href="https://sagar-tailor-portfolio.vercel.app/">Portfolio</a>
-
-<br/><br/>
-
-<img src="./assets/footer.gif" alt="Animated footer" width="100%" />
-
-Build. Research. Iterate.
+<img src="https://skillicons.dev/icons?i=python,go,typescript,javascript,cpp,c&theme=dark"
+     height="52"
+     alt="Python Go TypeScript JavaScript C++ C"/>
 
 </div>
+
+### Backend · Web · Systems
+
+<div align="center">
+
+<img src="https://skillicons.dev/icons?i=nodejs,express,nextjs,fastapi,docker,linux,git,github&theme=dark"
+     height="52"
+     alt="Node.js Express Next.js FastAPI Docker Linux Git GitHub"/>
+
+</div>
+
+<div align="center">
+
+`REST APIs` · `WebSockets` · `Concurrency` · `System Design` · `Automation`
+
+</div>
+
+### AI · Data · Scientific Computing
+
+<div align="center">
+
+<img src="https://skillicons.dev/icons?i=pytorch&theme=dark"
+     height="52"
+     alt="PyTorch"/>
+
+</div>
+
+<div align="center">
+
+`NumPy` · `Pandas` · `Scikit-learn` · `Machine Learning`
+· `Deep Learning` · `Remote Sensing` · `Geospatial Data`
+
+</div>
+
+### Databases
+
+<div align="center">
+
+<img src="https://skillicons.dev/icons?i=mongodb,mysql,postgresql&theme=dark"
+     height="52"
+     alt="MongoDB MySQL PostgreSQL"/>
+
+</div>
+
+<img src="./assets/section-divider.svg"
+     width="100%"
+     alt="Animated section divider"/>
+
+## `selected_work`
+
+<table>
+<tr>
+
+<td width="50%" valign="top">
+
+### ⛓️ `deadlockd`
+
+**High-performance deadlock simulation & concurrency visualizer.**
+
+A real-time systems project with a concurrent Go simulation engine and a reactive Next.js frontend.
+
+It models resource contention, evaluates safe states using **Banker's Algorithm**, detects cyclic dependencies and pushes state changes through WebSockets.
+
+**Built with**
+
+`Go` · `Next.js` · `TypeScript` · `WebSockets`
+
+<a href="https://github.com/slazyverse/deadlockd">
+<strong>→ View repository</strong>
+</a>
+
+</td>
+
+<td width="50%" valign="top">
+
+### 🌍 `AKASH`
+
+**Atmospheric Knowledge — AQI from Satellite Harmonics.**
+
+A scientific-computing project around satellite-derived atmospheric data, environmental analysis and engineering workflows for working with large scientific datasets.
+
+**Built with**
+
+`Python` · `Data Processing` · `Remote Sensing`
+
+<a href="https://github.com/slazyverse/AKASH-Atmospheric-Knowledge-AQI-from-Satellite-Harmonics-">
+<strong>→ View repository</strong>
+</a>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td width="50%" valign="top">
+
+### 🧬 `portfolio`
+
+**The layer underneath.**
+
+A systems-minded personal portfolio designed as a cross-section:
+
+**surface → interface → engine → substrate**
+
+**Built with**
+
+`Next.js 16` · `TypeScript` · `Three.js`
+· `React Three Fiber` · `WebGL`
+
+<a href="https://github.com/slazyverse/portfolio">
+<strong>→ Source</strong>
+</a>
+
+&nbsp;·&nbsp;
+
+<a href="https://sagar-tailor-portfolio.vercel.app/">
+<strong>→ Live</strong>
+</a>
+
+</td>
+
+<td width="50%" valign="top">
+
+### ✈️ `APIx`
+
+**Airfare Price Index — collaborative work.**
+
+A quality-adjusted, high-frequency airfare price-index project built around real-market evidence, an auditable collection pipeline and explicit statistical safeguards.
+
+I keep this under **Collaborative Work** because the repository is currently owned by `Rexy-5097`, not `slazyverse`.
+
+**Built with**
+
+`Python` · `Statistical Computing` · `Data Engineering`
+
+<a href="https://github.com/Rexy-5097/APIX">
+<strong>→ View repository</strong>
+</a>
+
+</td>
+
+</tr>
+</table>
+
+<img src="./assets/section-divider.svg"
+     width="100%"
+     alt="Animated section divider"/>
+
+## `the_motion_layer`
+
+This is where the profile gets a little more alive.
+
+Instead of relying on CSS or JavaScript that GitHub will strip, the motion is carried by **self-contained animated SVG assets**.
+
+<div align="center">
+
+<img src="./assets/car-orbit.svg"
+     alt="Animated futuristic car orbiting a systems core with particles"
+     width="100%"/>
+
+### `SYSTEM CORE`
+
+`signal` · `state` · `motion` · `concurrency`
+
+</div>
+
+The car is deliberately a visual metaphor rather than decoration:
+
+> **the interface moves around the system, but the system is the thing underneath.**
+
+<img src="./assets/section-divider.svg"
+     width="100%"
+     alt="Animated section divider"/>
+
+## `engineering_personality`
+
+I like problems where the obvious layer is **not** the interesting one.
+
+```text
+A race condition nobody noticed.
+
+A dataset that rejects the clean assumption.
+
+A model that looks correct until you test it.
+
+An API that works locally but breaks under pressure.
+
+A system that becomes elegant only after the architecture is understood.
