@@ -1,0 +1,74 @@
+name: Contribution telemetry
+
+# Renders the README's activity figure from the live contribution calendar and
+# publishes it to the `output` branch as a single, force-pushed commit — so the
+# figure refreshes daily without adding a commit a day to `main`.
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  push:
+    branches: [main]
+    paths:
+      - "tools/telemetry.py"
+      - "tools/svgkit.py"
+      - "tools/glyphs/**"
+      - ".github/workflows/telemetry.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: telemetry
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Render from the contribution calendar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python tools/telemetry.py --user "${{ github.repository_owner }}" --out dist
+
+      - name: Check the output is well-formed SVG
+        run: |
+          python - <<'EOF'
+          import pathlib, xml.etree.ElementTree as ET
+          files = sorted(pathlib.Path("dist").glob("*.svg"))
+          assert len(files) == 2, files
+          for f in files:
+              ET.parse(f)
+              print("ok", f, f.stat().st_size, "bytes")
+          EOF
+
+      - name: Publish to the output branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd dist
+          git init -q -b output
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Render contribution telemetry for $(date -u +%F)"
+          git push -q -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git" output
+
+      # GitHub disables scheduled workflows after 60 days without repository
+      # activity. Re-enabling an enabled workflow resets that clock without a
+      # commit, so the figure keeps updating through a quiet stretch.
+      - name: Keep the schedule alive
+        if: github.event_name == 'schedule'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/telemetry.yml/enable"
