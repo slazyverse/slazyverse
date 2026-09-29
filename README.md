@@ -17,7 +17,7 @@
 </picture>
 
 **Computer Science & Engineering**<br>
-AI / ML &nbsp;·&nbsp; Backend &nbsp;·&nbsp; Systems &nbsp;·&nbsp; Scientific Computing
+AI&nbsp;/&nbsp;ML &nbsp;·&nbsp; Backend &nbsp;·&nbsp; Systems &nbsp;·&nbsp; Scientific&nbsp;Computing
 
 <br>
 
