@@ -2,11 +2,15 @@ name: Contribution telemetry
 
 # Renders the README's activity figure from the live contribution calendar and
 # publishes it to the `output` branch as a single, force-pushed commit — so the
-# figure refreshes daily without adding a commit a day to `main`.
+# figure stays current without adding commits to `main`.
+#
+# Every six hours, not once a day: GitHub may delay or drop a scheduled run
+# under load, and the calendar itself lags new commits. Several chances a day
+# keep the figure at most hours behind, never a day.
 
 on:
   schedule:
-    - cron: "17 3 * * *"
+    - cron: "17 */6 * * *"
   push:
     branches: [main]
     paths:

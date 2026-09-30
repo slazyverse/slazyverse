@@ -2,7 +2,7 @@
   Sagar Tailor · github.com/slazyverse
 
   Every figure on this page is generated from one set of design tokens by
-  tools/build_assets.py; the activity figure is rebuilt daily by
+  tools/build_assets.py; the activity figure is rebuilt every six hours by
   .github/workflows/telemetry.yml. Figures ship as dark and light files,
   chosen per viewer with <picture> and prefers-color-scheme. Link chips carry
   both palettes inside one file instead, because GitHub cannot keep a
@@ -295,7 +295,7 @@ Directions I'm actively working in — not credentials.
   <img src="https://raw.githubusercontent.com/slazyverse/slazyverse/output/contribution-telemetry-dark.svg" width="100%" alt="Contribution activity for the last twelve months: a scan line sweeps the contribution calendar and each active day flares as it passes, above a trace of weekly totals">
 </picture>
 
-<sub>Rendered daily from the public contribution calendar by [a workflow in this repository](https://github.com/slazyverse/slazyverse/blob/main/.github/workflows/telemetry.yml) — no third-party stats service.</sub>
+<sub>Rendered every six hours from the public contribution calendar by [a workflow in this repository](https://github.com/slazyverse/slazyverse/blob/main/.github/workflows/telemetry.yml) — no third-party stats service.</sub>
 
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/slazyverse/slazyverse/main/assets/dividers/signal-light.svg">

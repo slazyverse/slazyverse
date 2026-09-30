@@ -6,7 +6,7 @@
 Each asset is emitted twice — `-dark.svg` and `-light.svg` — and the README
 picks one per viewer with <picture> and prefers-color-scheme, which GitHub maps
 to the viewer's GitHub theme. The contribution telemetry is not built here; it
-is rebuilt daily by .github/workflows/telemetry.yml (see tools/telemetry.py).
+is rebuilt every six hours by .github/workflows/telemetry.yml (see tools/telemetry.py).
 """
 
 from __future__ import annotations
