@@ -109,7 +109,7 @@ class GlyphTable:
             "capHeight": self.cap_height,
             "glyphs": {k: [a, d] for k, (a, d) in sorted(self.glyphs.items())},
         }
-        with open(path, "w", encoding="utf-8") as fh:
+        with open(path, "w", encoding="utf-8", newline="\n") as fh:
             json.dump(payload, fh, ensure_ascii=False, separators=(",", ":"))
             fh.write("\n")
 
