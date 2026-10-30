@@ -69,6 +69,9 @@ def hero(p) -> str:
 
     name_fill = "url(#nameInk)" if p["glow"] else p["ink_hi"]
     name_svg, _ = ts.run(DISPLAY, name, W / 2, base, size, name_fill, anchor="middle", tracking=tracking)
+    # A specular band crosses the letterforms and nothing else: the same run
+    # again, as a mask, with one skewed gradient travelling under it.
+    mask_run, _ = ts.run(DISPLAY, name, W / 2, base, size, "#fff", anchor="middle", tracking=tracking)
 
     lab = 11.5
     left, _ = ts.text(MONO, "00 — SURFACE", x0, rail + 27, lab, p["ink_low"], tracking=0.14)
@@ -103,6 +106,17 @@ def hero(p) -> str:
                 (100, "transform:scale(4.2);opacity:0"),
             ],
         )
+        + ".sh{animation:sh 9s cubic-bezier(.45,0,.3,1) infinite}"
+        + keyframes(
+            "sh",
+            [
+                (0, "transform:translateX(0);opacity:0"),
+                (6, "opacity:1"),
+                (40, "opacity:1"),
+                (46, f"transform:translateX({W + 460}px);opacity:0"),
+                (100, f"transform:translateX({W + 460}px);opacity:0"),
+            ],
+        )
     )
 
     defs = ts.defs() + (
@@ -110,6 +124,22 @@ def hero(p) -> str:
         f'<stop offset="0" stop-color="{p["cyan"]}" stop-opacity="0"/>'
         f'<stop offset=".8" stop-color="{p["cyan"]}" stop-opacity=".9"/>'
         f'<stop offset="1" stop-color="{p["cyan_soft"]}"/></linearGradient>'
+    )
+    # Cyan, not white: the name is already near-white on the dark ground, so
+    # a white band crosses it invisibly. Cyan is the token for anything moving.
+    sheen_col = p["cyan_soft"] if p["glow"] else p["cyan"]
+    sheen_a = ".55" if p["glow"] else ".4"
+    defs += (
+        f'<mask id="nmask" maskUnits="userSpaceOnUse" x="0" y="0" width="{W}" height="{H}">{mask_run}</mask>'
+        '<linearGradient id="shg" x1="0" x2="1" y1="0" y2="0">'
+        f'<stop offset="0" stop-color="{sheen_col}" stop-opacity="0"/>'
+        f'<stop offset=".5" stop-color="{sheen_col}" stop-opacity="{sheen_a}"/>'
+        f'<stop offset="1" stop-color="{sheen_col}" stop-opacity="0"/></linearGradient>'
+    )
+    sheen = (
+        '<g mask="url(#nmask)"><g class="sh">'
+        f'<rect x="-360" y="{fmt(top - 14)}" width="180" height="{fmt(cap + 28)}"'
+        ' fill="url(#shg)" transform="skewX(-12)"/></g></g>'
     )
     glow = ""
     if p["glow"]:
@@ -129,6 +159,7 @@ def hero(p) -> str:
     body = (
         glow
         + name_svg
+        + sheen
         + f'<line x1="{x0}" y1="{fmt(rail)}" x2="{x1}" y2="{fmt(rail)}" {hair(p)}/>'
         + tick_path
         + f'<g class="pk"><rect x="{x0}" y="{fmt(rail - 1)}" width="{L}" height="2" fill="url(#pkg)"{bloom}/></g>'
@@ -742,6 +773,20 @@ def timeline(name, T, stops, prop="opacity", base=None, ease="linear"):
     return f".{name}{{{b}animation:{name} {T}s {ease} infinite}}" + keyframes(name, kf)
 
 
+def path_move(name, T, stops, ease="linear"):
+    """Keyframes walking an element through (seconds, x, y) waypoints.
+
+    Orthogonal routing is a list of corners, so a dot that follows a rail
+    drawn with H and V segments is the same list of points twice.
+    """
+    kf = [(100 * t / T, f"transform:translate({fmt(x)}px,{fmt(y)}px)") for t, x, y in stops]
+    if kf[0][0] > 0:
+        kf.insert(0, (0, kf[0][1]))
+    if kf[-1][0] < 100:
+        kf.append((100, kf[-1][1]))
+    return f".{name}{{animation:{name} {fmt(T)}s {ease} infinite}}" + keyframes(name, kf)
+
+
 def arrow_line(x0, y0, x1, y1, r0, r1):
     dx, dy = x1 - x0, y1 - y0
     L = math.hypot(dx, dy)
@@ -1167,6 +1212,332 @@ def toolkit_strip() -> None:
         write(os.path.join(ASSETS, "toolkit", f"icons-{mode}.svg"), svg.strip() + "\n")
 
 
+# ==========================================================================
+# TEAM FIGURES
+#
+# Two projects whose repository sits with the team lead; each figure draws
+# the part of the system I own inside the team, and nothing it cannot
+# support. APIx collects, checks, and then declines to publish an index;
+# AdityaNet parses the HEL1OS archive orbit by orbit.
+# ==========================================================================
+
+
+def project_apix(p) -> str:
+    W, H, T = 1000, 260, 12.0
+    ts = Typesetter()
+    css = []
+    g = p["glow"]
+    bloom = ' filter="url(#bl)"' if g else ""
+
+    VC = 134
+    sx, sy, sw, sh = 44, 110, 104, 48
+    cx0, cw, ch = 208, 104, 20
+    tops = [98, 124, 150]
+    mids = [t + ch / 2 for t in tops]
+    bx, lane = 392, 200
+    stx, sty, stw, sth = 436, 110, 172, 48
+    gx = 636
+
+    def panel(x, y, w, h, accent=False):
+        stroke = (
+            f'stroke="{p["cyan"]}" stroke-opacity=".5"'
+            if accent
+            else f'stroke="{p["hair"]}" stroke-opacity="{fmt(p["hair_a"] * 2.2)}"'
+        )
+        fill = f'fill="{p["cyan"]}" fill-opacity=".05"' if accent else 'fill="none"'
+        return f'<rect x="{fmt(x)}" y="{fmt(y)}" width="{fmt(w)}" height="{fmt(h)}" rx="2" {fill} {stroke}/>'
+
+    # --- Rails: scheduler -> collectors -> boundary -> store -> gate -------
+    segs = []
+    for ym in mids:
+        segs.append(f"M{sx + sw} {VC}H178V{fmt(ym)}H{cx0}")
+        segs.append(f"M{cx0 + cw} {fmt(ym)}H{bx}")
+        segs.append(f"M{bx} {fmt(ym)}H414V{VC}H{stx}")
+    segs.append(f"M{stx + stw} {VC}H{gx}")
+    rails = f'<path d="{"".join(segs)}" fill="none" {hair(p, p["hair_a"] * 1.8)}/>'
+    replay = (
+        f'<path d="M{bx} {fmt(mids[2])}V{lane}H240" fill="none" stroke="{p["violet"]}"'
+        f' stroke-opacity=".38" stroke-dasharray="3 4"/>'
+    )
+    boundary = (
+        f'<line x1="{bx}" y1="86" x2="{bx}" y2="{lane + 8}" stroke="{p["violet"]}"'
+        f' stroke-opacity=".5" stroke-dasharray="4 4"/>'
+    )
+
+    # --- One observation per collector; the third is excluded and replayed --
+    marks, arrivals = [], []
+    for i, ym in enumerate(mids):
+        t0 = 0.5 + 0.24 * i
+        wp = [
+            (t0, sx + sw, VC), (t0 + 0.45, 178, VC), (t0 + 0.75, 178, ym),
+            (t0 + 1.05, cx0, ym), (t0 + 1.55, cx0 + cw, ym), (t0 + 2.25, bx, ym),
+        ]
+        if i == 2:
+            wp += [
+                (t0 + 2.75, bx, lane), (t0 + 3.65, 240, lane), (t0 + 5.15, 240, lane),
+                (t0 + 6.05, bx, lane), (t0 + 6.55, bx, ym), (t0 + 6.85, 414, ym),
+                (t0 + 7.15, 414, VC), (t0 + 7.55, stx, VC),
+            ]
+        else:
+            wp += [(t0 + 2.55, 414, ym), (t0 + 2.85, 414, VC), (t0 + 3.25, stx, VC)]
+        arrive = wp[-1][0]
+        arrivals.append(arrive)
+        css.append(path_move(f"m{i}", T, wp))
+        css.append(
+            timeline(f"m{i}o", T, [(t0 - 0.01, 0), (t0, 1), (arrive - 0.08, 1), (arrive, 0)], base=0, ease="step-end")
+        )
+        if i == 2:
+            tb = t0 + 2.25
+            css.append(timeline("m2a", T, [(0, 1), (tb, 1), (tb + 0.01, 0)], base=1, ease="step-end"))
+            css.append(timeline("m2b", T, [(0, 0), (tb, 0), (tb + 0.01, 1)], base=0, ease="step-end"))
+            inner = (
+                f'<circle class="m2a" r="3.2" fill="{p["cyan"]}"{bloom}/>'
+                f'<circle class="m2b" r="3.2" fill="{p["violet"]}"{bloom}/>'
+            )
+        else:
+            inner = f'<circle r="3.2" fill="{p["cyan"]}"{bloom}/>'
+        marks.append(f'<g class="m{i}"><g class="m{i}o">{inner}</g></g>')
+
+    # --- Scheduler ---------------------------------------------------------
+    ticks = "".join(f"M{x} 138V150" for x in (58, 76, 94, 112, 130))
+    css.append(path_move("wv", T, [(0.1, 58, 144), (0.6, 130, 144)]))
+    css.append(timeline("wvo", T, [(0.09, 0), (0.1, 1), (0.6, 1), (0.7, 0)], base=0, ease="step-end"))
+    sched = (
+        panel(sx, sy, sw, sh)
+        + ts.text(MONO_BOLD, "SCHEDULER", sx + 14, sy + 22, 11, p["ink_hi"], tracking=0.14)[0]
+        + f'<path d="{ticks}" {hair(p, p["hair_a"] * 2.6)}/>'
+        + f'<g class="wv"><g class="wvo"><rect x="-1" y="136" width="2" height="16" fill="{p["cyan"]}"{bloom}/></g></g>'
+    )
+
+    # --- Collectors --------------------------------------------------------
+    cols = []
+    for i, top in enumerate(tops):
+        cols.append(panel(cx0, top, cw, ch))
+        cols.append(ts.text(MONO, f"COLLECTOR 0{i + 1}", cx0 + 11, top + ch / 2 + 4, 11, p["ink"], tracking=0.02)[0])
+
+    # --- Store -------------------------------------------------------------
+    css.append(
+        ".fl{transform-box:fill-box;transform-origin:left center;animation:fl %ss step-end infinite}" % fmt(T)
+        + keyframes(
+            "fl",
+            [(0, "transform:scaleX(0)")]
+            + [(100 * t / T, f"transform:scaleX({v})") for t, v in zip(arrivals, (".34", ".67", "1"))]
+            + [
+                (100 * 11.5 / T, "transform:scaleX(1)"),
+                (100 * 11.7 / T, "transform:scaleX(0)"),
+                (100, "transform:scaleX(0)"),
+            ],
+        )
+    )
+    bar_x, bar_y, bar_w = stx + 14, sty + 30, stw - 28
+    store = (
+        panel(stx, sty, stw, sth, accent=True)
+        + ts.text(MONO_BOLD, "OBSERVATIONS", stx + 14, sty + 22, 11, p["ink_hi"], tracking=0.08)[0]
+        + ts.text(MONO, "SQLITE", stx + stw - 14, sty + 22, 10.5, p["ink_low"], anchor="end", tracking=0.08)[0]
+        + f'<rect x="{fmt(bar_x)}" y="{fmt(bar_y)}" width="{fmt(bar_w)}" height="6" rx="1" fill="{p["hair"]}"'
+        f' fill-opacity="{fmt(p["hair_a"] * 1.6)}"/>'
+        + f'<rect class="fl" x="{fmt(bar_x)}" y="{fmt(bar_y)}" width="{fmt(bar_w)}" height="6" rx="1"'
+        f' fill="{p["cyan"]}"{bloom}/>'
+    )
+
+    # --- Gate: the index the project will not publish yet -------------------
+    css.append(path_move("gq", T, [(9.2, stx + stw, VC), (9.9, gx - 12, VC)]))
+    css.append(timeline("gqo", T, [(9.19, 0), (9.2, 1), (11.5, 1), (11.7, 0)], base=0, ease="step-end"))
+    css.append(timeline("gt", T, [(9.89, 0.45), (9.9, 1), (11.5, 1), (11.7, 0.45)], base=0.45, ease="step-end"))
+    css.append(timeline("wh", T, [(9.89, 0), (9.9, 1), (11.5, 1), (11.7, 0)], base=0, ease="step-end"))
+    gate_body = (
+        f'<rect class="gt" x="{gx}" y="88" width="4" height="92" rx="1" fill="{p["violet"]}"/>'
+        + f'<g class="gq"><g class="gqo"><circle r="3.2" fill="{p["cyan"]}"{bloom}/></g></g>'
+        + corner_brackets(gx + 20, 76, 944 - (gx + 20), 120, p["hair"], p["hair_a"] * 2.4, length=12)
+        + ts.text(MONO_BOLD, "INDEX", gx + 44, 104, 11, p["ink_mid"], tracking=0.22)[0]
+        + ts.text(MONO, "QUALITY-ADJUSTED AIRFARE INDEX", gx + 44, 128, 11, p["ink_low"], tracking=0.04)[0]
+        + ts.text(MONO, "STATUS", gx + 44, 154, 11, p["ink_low"], tracking=0.1)[0]
+        + f'<g class="wh">{ts.text(MONO_BOLD, "WITHHELD", gx + 110, 154, 11, p["violet"], tracking=0.18)[0]}</g>'
+        + ts.text(MONO, "ONE WAVE ON ONE ROUTE CANNOT CARRY IT", gx + 44, 178, 11, p["ink_mid"], tracking=0.02)[0]
+    )
+
+    # --- Frame -------------------------------------------------------------
+    head_l, _ = ts.text(MONO, "COLLECTION PATH · ILLUSTRATIVE", 36, 36, 11, p["ink_low"], tracking=0.12)
+    head_r, _ = ts.text(
+        MONO_BOLD, "TEAM PROJECT · LEAD REXY-5097", W - 36, 36, 11, p["ink_mid"], anchor="end", tracking=0.2
+    )
+    rule = f'<line x1="36" y1="48" x2="{W - 36}" y2="48" {hair(p)}/>'
+    b_lab, _ = ts.text(MONO, "EXECUTION BOUNDARY", bx, 78, 10.5, p["ink_low"], anchor="middle", tracking=0.1)
+    r_lab, _ = ts.text(
+        MONO, "EXCLUSION REPLAY", 316, 218, 10.5, p["violet"], anchor="middle", tracking=0.1, opacity=0.75
+    )
+    foot_l, _ = ts.text(
+        MONO, "MY PART · COLLECTORS · STORE · SCHEDULER · BOUNDARY ANALYSIS", 36, H - 26, 11, p["ink_low"]
+    )
+    foot_r, _ = ts.text(
+        MONO, "16/29 COMMITS ON MAIN · 17 MERGED PULL REQUESTS", W - 36, H - 26, 11, p["ink_low"], anchor="end"
+    )
+    frame = corner_brackets(12, 12, W - 24, H - 24, p["hair"], p["hair_a"] * 2.2)
+
+    body = (
+        frame + head_l + head_r + rule
+        + rails + replay + boundary + b_lab + r_lab
+        + sched + "".join(cols) + store + gate_body
+        + "".join(marks)
+        + foot_l + foot_r
+    )
+    defs = ts.defs() + (glow_filter("bl", 1.8) if g else "")
+    return document(
+        W, H, body,
+        title="APIx — collection path, and the index it will not publish yet",
+        css="".join(css), defs=defs,
+    )
+
+
+def project_adityanet(p) -> str:
+    W, H, T = 1000, 260, 12.0
+    ts = Typesetter()
+    css = []
+    g = p["glow"]
+    bloom = ' filter="url(#bl)"' if g else ""
+
+    total, before, after = 391, 134, 389
+    cols, cell, gap = 46, 8, 2
+    pitch = cell + gap
+    gx0, gy0 = 40, 92
+    gw, gh = cols * pitch - gap, 9 * pitch - gap
+    defects = (211, 344)
+    t_scan0, t_scan1 = 1.0, 7.4
+
+    rnd = random.Random(23)
+    pre = set(rnd.sample([k for k in range(total) if k not in defects], before))
+
+    # Each cell carries only an animation-delay: the column it sits in sets
+    # when the scan reaches it, and three classes carry the three outcomes —
+    # already clean, newly clean, and the two orbits the archive itself broke.
+    for name, base_op, hold in (("kd", 0.09, "0.82"), ("kc", 0.34, "0.82"), ("kx", 0.12, "0.95")):
+        css.append(
+            f".{name}{{opacity:{base_op};animation:{name} {fmt(T)}s linear infinite backwards}}"
+            + keyframes(
+                name,
+                [(0, f"opacity:{base_op}"), (2, "opacity:0.95"), (6, f"opacity:{hold}"),
+                 (85, f"opacity:{hold}"), (92, f"opacity:{base_op}"), (100, f"opacity:{base_op}")],
+            )
+        )
+    cells = []
+    for k in range(total):
+        c, r = k % cols, k // cols
+        x, y = gx0 + c * pitch, gy0 + r * pitch
+        t_hit = t_scan0 + (t_scan1 - t_scan0) * (c * pitch) / max(gw - cell, 1)
+        cls, col = ("kx", p["violet"]) if k in defects else (("kc" if k in pre else "kd"), p["cyan"])
+        cells.append(
+            f'<rect class="{cls}" x="{fmt(x)}" y="{fmt(y)}" width="{cell}" height="{cell}" rx="1"'
+            f' fill="{col}" style="animation-delay:{t_hit:.2f}s"/>'
+        )
+        if k in defects:
+            cells.append(
+                f'<rect class="{cls}" x="{fmt(x - 2.5)}" y="{fmt(y - 2.5)}" width="{cell + 5}"'
+                f' height="{cell + 5}" rx="2" fill="none" stroke="{p["violet"]}" stroke-width="1"'
+                f' style="animation-delay:{t_hit:.2f}s"/>'
+            )
+    grid_bg = (
+        f'<rect x="{fmt(gx0 - 6)}" y="{fmt(gy0 - 6)}" width="{fmt(gw + 12)}" height="{fmt(gh + 12)}"'
+        f' rx="2" fill="none" {hair(p, p["hair_a"] * 1.6)}/>'
+    )
+
+    # --- The scan that walks the archive ------------------------------------
+    css.append(path_move("sl", T, [(t_scan0, gx0, 0), (t_scan1, gx0 + gw, 0)]))
+    css.append(
+        timeline("slo", T, [(t_scan0 - 0.01, 0), (t_scan0, 1), (t_scan1 - 0.1, 1), (t_scan1, 0)], base=0, ease="step-end")
+    )
+    scan = (
+        '<g class="sl"><g class="slo">'
+        f'<rect x="-26" y="{fmt(gy0 - 6)}" width="26" height="{fmt(gh + 12)}" fill="url(#slg)"/>'
+        f'<rect x="-1" y="{fmt(gy0 - 8)}" width="2" height="{fmt(gh + 16)}" fill="{p["cyan"]}"{bloom}/>'
+        "</g></g>"
+    )
+
+    # --- One gauge, two readings: 134 before, 389 after ---------------------
+    tr_y, tr_h = 204, 6
+    before_w, after_w = gw * before / total, gw * after / total
+    css.append(
+        ".gb{transform-box:fill-box;transform-origin:left center;animation:gb %ss cubic-bezier(.4,0,.2,1) infinite}"
+        % fmt(T)
+        + keyframes(
+            "gb",
+            [(0, "transform:scaleX(0)"), (100 * t_scan0 / T, "transform:scaleX(0)"),
+             (100 * t_scan1 / T, "transform:scaleX(1)"), (100 * 11.5 / T, "transform:scaleX(1)"),
+             (100 * 11.8 / T, "transform:scaleX(0)"), (100, "transform:scaleX(0)")],
+        )
+    )
+    css.append(timeline("gn", T, [(t_scan1 - 0.01, 0), (t_scan1, 1), (11.5, 1), (11.8, 0)], base=0, ease="step-end"))
+    gauge = (
+        f'<rect x="{gx0}" y="{tr_y}" width="{fmt(gw)}" height="{tr_h}" rx="1" fill="{p["hair"]}"'
+        f' fill-opacity="{fmt(p["hair_a"] * 1.6)}"/>'
+        f'<rect x="{gx0}" y="{tr_y}" width="{fmt(before_w)}" height="{tr_h}" rx="1" fill="{p["ink_mid"]}"'
+        f' fill-opacity=".55"/>'
+        f'<rect class="gb" x="{gx0}" y="{tr_y}" width="{fmt(after_w)}" height="{tr_h}" rx="1"'
+        f' fill="{p["cyan"]}"{bloom}/>'
+        f'<path d="M{fmt(gx0 + before_w)} {tr_y - 7}v7" stroke="{p["ink_low"]}"/>'
+        + ts.text(MONO, "134 BEFORE", gx0 + before_w, tr_y - 12, 10, p["ink_low"], anchor="middle", tracking=0.08)[0]
+        + ts.text(MONO, "PARSE RESULT", gx0, tr_y - 10, 11, p["ink_low"], tracking=0.14)[0]
+        + '<g class="gn">'
+        + ts.text(MONO_BOLD, "389 / 391 ORBITS CLEAN", gx0 + gw, tr_y - 10, 11, p["cyan"], anchor="end", tracking=0.1)[0]
+        + "</g>"
+    )
+
+    # --- The parsers, ticking on as the scan reaches them -------------------
+    rx = 540
+    products = [
+        "LIGHT CURVES", "SPECTRA", "HOUSEKEEPING",
+        "GOOD-TIME INTERVALS", "PHOTON EVENTS", "ORBIT IDENTITY · VERSION PRECEDENCE",
+    ]
+    rows = [
+        ts.text(MONO, "PARSERS I WROTE", rx, 68, 11, p["ink_low"], tracking=0.18)[0],
+        f'<line x1="{rx}" y1="80" x2="{W - 36}" y2="80" {hair(p)}/>',
+    ]
+    for i, name in enumerate(products):
+        y = 102 + i * 22
+        t_on = 2.0 + 0.85 * i
+        c = f"pr{i}"
+        css.append(timeline(c, T, [(t_on - 0.01, 0), (t_on, 1), (11.5, 1), (11.8, 0)], base=0, ease="step-end"))
+        rows.append(
+            f'<rect x="{rx}" y="{fmt(y - 8)}" width="8" height="8" rx="1" fill="none" {hair(p, p["hair_a"] * 2.6)}/>'
+        )
+        rows.append(ts.text(MONO, name, rx + 22, y, 11.5, p["ink_low"], tracking=0.02)[0])
+        rows.append(
+            f'<g class="{c}"><rect x="{rx}" y="{fmt(y - 8)}" width="8" height="8" rx="1" fill="{p["cyan"]}"/>'
+            + ts.text(MONO, name, rx + 22, y, 11.5, p["ink_hi"], tracking=0.02)[0]
+            + "</g>"
+        )
+
+    head_l, _ = ts.text(MONO, "HEL1OS · ARCHIVE-WIDE VERIFICATION", 36, 36, 11, p["ink_low"], tracking=0.12)
+    head_r, _ = ts.text(
+        MONO_BOLD, "TEAM PROJECT · LEAD REXY-5097", W - 36, 36, 11, p["ink_mid"], anchor="end", tracking=0.2
+    )
+    rule = f'<line x1="36" y1="48" x2="{W - 36}" y2="48" {hair(p)}/>'
+    foot_l, _ = ts.text(MONO, "ORBIT MAP · LAYOUT ILLUSTRATIVE", 36, H - 26, 11, p["ink_low"])
+    foot_r, fw = ts.text(
+        MONO, "2 ORBITS · KNOWN ARCHIVE DEFECTS · RECORDED, NOT BENT", W - 36, H - 26, 11, p["ink_low"], anchor="end"
+    )
+    swatch = f'<rect x="{fmt(W - 36 - fw - 14)}" y="{H - 34}" width="7" height="7" rx="1" fill="{p["violet"]}"/>'
+    frame = corner_brackets(12, 12, W - 24, H - 24, p["hair"], p["hair_a"] * 2.2)
+
+    defs = (
+        ts.defs()
+        + '<linearGradient id="slg" x1="0" x2="1" y1="0" y2="0">'
+        + f'<stop offset="0" stop-color="{p["cyan"]}" stop-opacity="0"/>'
+        + f'<stop offset="1" stop-color="{p["cyan"]}" stop-opacity=".22"/></linearGradient>'
+        + (glow_filter("bl", 1.8) if g else "")
+    )
+    body = (
+        frame + head_l + head_r + rule
+        + grid_bg + "".join(cells) + scan + gauge
+        + "".join(rows)
+        + foot_l + swatch + foot_r
+    )
+    return document(
+        W, H, body,
+        title="AdityaNet — HEL1OS archive-wide verification, 389 of 391 orbits clean",
+        css="".join(css), defs=defs,
+    )
+
+
 def main() -> None:
     toolkit_strip()
     # The telemetry workflow draws its text from these tables, so it never
@@ -1178,6 +1549,8 @@ def main() -> None:
     emit("projects", "deadlockd", project_deadlockd)
     emit("projects", "akash", project_akash)
     emit("projects", "portfolio", project_portfolio)
+    emit("projects", "apix", project_apix)
+    emit("projects", "adityanet", project_adityanet)
     emit("system", "core", system_core)
     emit("hero", "name", hero)
     emit("hero", "headline", headline)

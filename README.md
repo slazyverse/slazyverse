@@ -195,36 +195,43 @@ A portfolio built as a cross-section rather than a page. A procedural WebGL city
   <img src="https://raw.githubusercontent.com/slazyverse/slazyverse/main/assets/dividers/orbit-dark.svg" width="100%" alt="">
 </picture>
 
-### Collaborative work
+### Team projects
 
-Repositories owned by other people, where I built a defined part. Kept separate from my own work on purpose.
+Two team projects. I'm a member of both teams; the repository sits with the team lead, [Rexy-5097](https://github.com/Rexy-5097), and what follows is the part of each system the team handed me. Each figure animates that part.
 
-<table>
-<tr>
-<td>
+<br>
 
-**[APIx](https://github.com/Rexy-5097/apix)** &nbsp;<sub>repository owned by <a href="https://github.com/Rexy-5097">Rexy-5097</a> · collaborative contribution</sub>
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/slazyverse/slazyverse/main/assets/projects/apix-light.svg">
+  <img src="https://raw.githubusercontent.com/slazyverse/slazyverse/main/assets/projects/apix-dark.svg" width="100%" alt="APIx: a scheduler fires three collectors; their observations cross an execution boundary into the SQLite store, one of them excluded and replayed, and the index gate stays shut, marked withheld">
+</picture>
 
-A quality-adjusted, high-frequency airfare price index for India, and the auditable infrastructure that produces it — built against MoSPI problem statement 26056.
+#### [APIx](https://github.com/Rexy-5097/apix)
 
-**My part:** the data acquisition and ingestion layer — collectors, the SQLite observation store, the collection scheduler, execution-boundary and exclusion-replay analysis, and the test suites around them. 16 of the 29 commits on `main`, and 17 merged pull requests.
+*A quality-adjusted, high-frequency airfare price index for India.* &nbsp;<sub>Python · SQLite · scheduled collection · pytest — team project; the acquisition layer is mine</sub>
+
+A price index, and the auditable infrastructure that produces it — built against MoSPI problem statement 26056.
+
+**My part on the team:** the data acquisition and ingestion layer — collectors, the SQLite observation store, the collection scheduler, execution-boundary and exclusion-replay analysis, and the test suites around them. 16 of the 29 commits on `main`, and 17 merged pull requests.
 
 The project deliberately publishes no index yet: one collection wave on one route cannot carry that claim, and [its README says so](https://github.com/Rexy-5097/apix#readme).
 
-</td>
-</tr>
-<tr>
-<td>
+**Team lead** [Rexy-5097 ↗︎](https://github.com/Rexy-5097) — owns the repository &nbsp;·&nbsp; **Repository** [Rexy-5097/apix ↗︎](https://github.com/Rexy-5097/apix)
 
-**[AdityaNet](https://github.com/Rexy-5097/AdityaNet)** &nbsp;<sub>repository owned by <a href="https://github.com/Rexy-5097">Rexy-5097</a> · open-source contribution</sub>
+<br>
 
-A verifiable research platform for the Aditya-L1 SoLEXS and HEL1OS solar X-ray archive.
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/slazyverse/slazyverse/main/assets/projects/adityanet-light.svg">
+  <img src="https://raw.githubusercontent.com/slazyverse/slazyverse/main/assets/projects/adityanet-dark.svg" width="100%" alt="AdityaNet: a scan crosses a map of 391 HEL1OS orbits, lighting each one that parses clean and flagging the two known archive defects, while the parse gauge rises from 134 to 389 of 391">
+</picture>
 
-**My part:** the HEL1OS instrument parsers — light curves, spectra, housekeeping, good-time intervals and photon events, plus orbit identity and version precedence — in [one merged pull request](https://github.com/Rexy-5097/AdityaNet/pull/23). The pull request's archive-wide verification reports 389 of 391 orbits parsing fully clean, up from 134 before it; the other two are known archive defects. Where the real data falsified a rule in the spec, the parser kept enforcing the rule as written and recorded the evidence for the maintainer, rather than quietly weakening it.
+#### [AdityaNet](https://github.com/Rexy-5097/AdityaNet)
 
-</td>
-</tr>
-</table>
+*A verifiable research platform for the Aditya-L1 SoLEXS and HEL1OS solar X-ray archive.* &nbsp;<sub>Python · FITS instrument products · pytest — team project; the HEL1OS parsers are mine</sub>
+
+**My part on the team:** the HEL1OS instrument parsers — light curves, spectra, housekeeping, good-time intervals and photon events, plus orbit identity and version precedence — in [one merged pull request](https://github.com/Rexy-5097/AdityaNet/pull/23). The pull request's archive-wide verification reports 389 of 391 orbits parsing fully clean, up from 134 before it; the other two are known archive defects. Where the real data falsified a rule in the spec, the parser kept enforcing the rule as written and recorded the evidence for the team, rather than quietly weakening it.
+
+**Team lead** [Rexy-5097 ↗︎](https://github.com/Rexy-5097) — owns the repository &nbsp;·&nbsp; **Pull request** [AdityaNet#23 ↗︎](https://github.com/Rexy-5097/AdityaNet/pull/23)
 
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/slazyverse/slazyverse/main/assets/dividers/pulse-light.svg">
