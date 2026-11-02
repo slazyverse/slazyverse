@@ -71,7 +71,7 @@ Shared state under contention, safety checks, cycle detection, and live state pu
 
 **Backend & data platforms**<br>
 Async APIs, migrations, structured logging, scheduled collection, containerised environments.<br>
-<sub>→ <a href="https://github.com/slazyverse/AKASH-Atmospheric-Knowledge-AQI-from-Satellite-Harmonics-">AKASH</a> · <a href="https://github.com/Rexy-5097/apix">APIx</a></sub>
+<sub>→ <a href="https://github.com/slazyverse/AKASH-Atmospheric-Knowledge-AQI-from-Satellite-Harmonics-">AKASH</a> · <a href="https://github.com/slazyverse/apix">APIx</a></sub>
 
 </td>
 </tr>
@@ -126,7 +126,31 @@ Split the way my portfolio splits it: what has shipped in a public repository, a
 
 ### Selected work
 
-Three repositories I own. Each figure animates something the code actually does.
+Four repositories I own. Each figure animates something the code actually does.
+
+<br>
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/slazyverse/slazyverse/main/assets/projects/apix-light.svg">
+  <img src="https://raw.githubusercontent.com/slazyverse/slazyverse/main/assets/projects/apix-dark.svg" width="100%" alt="APIx: a scheduler fires three collectors; their observations cross an execution boundary into the SQLite store, one of them excluded and replayed, and the index gate stays shut, marked withheld">
+</picture>
+
+#### [APIx](https://github.com/slazyverse/apix)
+
+*A quality-adjusted, high-frequency airfare price index for India.* &nbsp;<sub>Python · SQLite · pytest · ruff · GitHub Actions · MIT — team project; the repository and the acquisition layer are mine</sub>
+
+A price index, and the auditable infrastructure that produces it — built against MoSPI problem statement 26056. Collection writes into four SQLite stores and a content-addressed artifact directory, standard library only, so the whole store is a path you can copy, diff and checksum. The hard part is not the arithmetic; it is being able to say later exactly which observations a number rests on, which were refused, and why — and to prove the refusals were not reconstructed afterwards to suit it.
+
+**What I built:** the data acquisition and ingestion layer — collectors, the SQLite observation store, the collection scheduler, the execution-boundary and exclusion-replay analysis, and the test suites around them. 16 of the 29 commits on `main`, and 17 merged pull requests.
+
+- **An automated run cannot reach the index.** `assert_not_index_input` raises before any evidence or store row is written, so a mislabelled automated run is never persisted at all; admitting an automated channel would be a recorded decision, not a flag — [`index_boundary.py`](https://github.com/slazyverse/apix/blob/main/src/apix/ingestion/collectors/index_boundary.py)
+- **The store refuses a circular metric.** It keeps no table of expected cells: storing the cells we saw and reading them back as the cells we expected measures coverage against our own success, which can never fall, and would report 100% on a day the collector was blocked — [`store.py`](https://github.com/slazyverse/apix/blob/main/src/apix/ingestion/store.py)
+- **A human claim, made mechanical.** Recorded exclusions are replayed through the same frozen spec code the engine uses, to ask whether it independently reaches the recorded verdict — and coverage is reported per check, never as one number, because the retained records support the checks unevenly — [`replay_exclusions.py`](https://github.com/slazyverse/apix/blob/main/tools/analysis/replay_exclusions.py)
+- **Determinism is a CI gate.** Every push runs the statistics-layer determinism boundary and `ruff` before anything else — [`test_architecture.py`](https://github.com/slazyverse/apix/blob/main/tests/test_architecture.py) · [`ci.yml`](https://github.com/slazyverse/apix/blob/main/.github/workflows/ci.yml)
+
+**The index is still withheld:** one collection wave on one route cannot carry that claim, and [the README says so](https://github.com/slazyverse/apix#readme).
+
+**Repository** [slazyverse/apix ↗︎](https://github.com/slazyverse/apix) &nbsp;·&nbsp; **Built with** [Rexy-5097 ↗︎](https://github.com/Rexy-5097) and [Basant-creator ↗︎](https://github.com/Basant-creator)
 
 <br>
 
@@ -195,30 +219,9 @@ A portfolio built as a cross-section rather than a page. A procedural WebGL city
   <img src="https://raw.githubusercontent.com/slazyverse/slazyverse/main/assets/dividers/orbit-dark.svg" width="100%" alt="">
 </picture>
 
-### Team projects
+### Team project
 
-Two team projects. I'm a member of both teams; the repository sits with the team lead, [Rexy-5097](https://github.com/Rexy-5097), and what follows is the part of each system the team handed me. Each figure animates that part.
-
-<br>
-
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/slazyverse/slazyverse/main/assets/projects/apix-light.svg">
-  <img src="https://raw.githubusercontent.com/slazyverse/slazyverse/main/assets/projects/apix-dark.svg" width="100%" alt="APIx: a scheduler fires three collectors; their observations cross an execution boundary into the SQLite store, one of them excluded and replayed, and the index gate stays shut, marked withheld">
-</picture>
-
-#### [APIx](https://github.com/Rexy-5097/apix)
-
-*A quality-adjusted, high-frequency airfare price index for India.* &nbsp;<sub>Python · SQLite · scheduled collection · pytest — team project; the acquisition layer is mine</sub>
-
-A price index, and the auditable infrastructure that produces it — built against MoSPI problem statement 26056.
-
-**My part on the team:** the data acquisition and ingestion layer — collectors, the SQLite observation store, the collection scheduler, execution-boundary and exclusion-replay analysis, and the test suites around them. 16 of the 29 commits on `main`, and 17 merged pull requests.
-
-The project deliberately publishes no index yet: one collection wave on one route cannot carry that claim, and [its README says so](https://github.com/Rexy-5097/apix#readme).
-
-**Team lead** [Rexy-5097 ↗︎](https://github.com/Rexy-5097) — owns the repository &nbsp;·&nbsp; **Repository** [Rexy-5097/apix ↗︎](https://github.com/Rexy-5097/apix)
-
-<br>
+A team project whose repository sits with the team lead, [Rexy-5097](https://github.com/Rexy-5097); what follows is the part of it the team handed me, and the figure animates that part.
 
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/slazyverse/slazyverse/main/assets/projects/adityanet-light.svg">
@@ -270,7 +273,7 @@ These are the principles I've taken from that kind of problem, each linked to th
 | **Make the failure impossible, not unlikely.** A dangerous configuration should fail to construct. | AKASH · [`config.py`](https://github.com/slazyverse/AKASH-Atmospheric-Knowledge-AQI-from-Satellite-Harmonics-/blob/main/backend/app/core/config.py) |
 | **A system you can't observe is one you can't operate.** One trace ID from middleware to query. | AKASH · [`main.py`](https://github.com/slazyverse/AKASH-Atmospheric-Knowledge-AQI-from-Satellite-Harmonics-/blob/main/backend/app/main.py) |
 | **When the data breaks the spec, record it — don't bend the rule.** | AdityaNet · [PR #23](https://github.com/Rexy-5097/AdityaNet/pull/23) |
-| **Don't publish a number the evidence can't carry.** | APIx · [README](https://github.com/Rexy-5097/apix#readme) |
+| **Don't publish a number the evidence can't carry.** | APIx · [README](https://github.com/slazyverse/apix#readme) |
 | **A decision that isn't written down didn't happen.** Reasons live beside the code. | AKASH · [`requirements.txt`](https://github.com/slazyverse/AKASH-Atmospheric-Knowledge-AQI-from-Satellite-Harmonics-/blob/main/backend/requirements.txt) |
 
 <picture>
