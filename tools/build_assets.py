@@ -106,6 +106,28 @@ def hero(p) -> str:
                 (100, "transform:scale(4.2);opacity:0"),
             ],
         )
+        + ".pk2{animation:pk2 7s cubic-bezier(.65,0,.35,1) infinite}"
+        + keyframes(
+            "pk2",
+            [
+                (0, "transform:translateX(0);opacity:0"),
+                (12, "opacity:1"),
+                (66, "opacity:1"),
+                (74, f"transform:translateX({travel}px);opacity:0"),
+                (100, f"transform:translateX({travel}px);opacity:0"),
+            ],
+        )
+        + ".ld{transform-box:fill-box;transform-origin:center;animation:ld 7s ease-out infinite}"
+        + keyframes(
+            "ld",
+            [
+                (0, "transform:scale(.35);opacity:0"),
+                (73, "transform:scale(.35);opacity:0"),
+                (77, "transform:scale(.6);opacity:.85"),
+                (93, "transform:scale(2.8);opacity:0"),
+                (100, "transform:scale(2.8);opacity:0"),
+            ],
+        )
         + ".sh{animation:sh 9s cubic-bezier(.45,0,.3,1) infinite}"
         + keyframes(
             "sh",
@@ -162,7 +184,10 @@ def hero(p) -> str:
         + sheen
         + f'<line x1="{x0}" y1="{fmt(rail)}" x2="{x1}" y2="{fmt(rail)}" {hair(p)}/>'
         + tick_path
+        + f'<g opacity=".4"><g class="pk2"><rect x="{fmt(x0 - 34)}" y="{fmt(rail - .5)}" width="{fmt(L * .7)}"'
+        f' height="1" fill="url(#pkg)"/></g></g>'
         + f'<g class="pk"><rect x="{x0}" y="{fmt(rail - 1)}" width="{L}" height="2" fill="url(#pkg)"{bloom}/></g>'
+        + f'<circle class="ld" cx="{x1}" cy="{fmt(rail)}" r="4" fill="none" stroke="{p["cyan"]}" stroke-width="1"/>'
         + f'<circle class="pl" cx="{x0}" cy="{fmt(rail)}" r="3" fill="none" stroke="{p["cyan"]}" stroke-width="1"/>'
         + f'<circle cx="{x0}" cy="{fmt(rail)}" r="3" fill="{p["cyan"]}"/>'
         + f'<path d="M{x1} {fmt(rail - 3.5)}l3.5 3.5l-3.5 3.5l-3.5 -3.5z" fill="{p["ink_low"]}"/>'
@@ -258,7 +283,7 @@ def headline(p) -> str:
 # ==========================================================================
 
 
-def chip(index: str, label: str, primary: bool) -> str:
+def chip(index: str, label: str, primary: bool, dur: float = 5.5) -> str:
     H, size, pad = 36, 12, 16
     ts = Typesetter()
     D, Lt = PALETTES["dark"], PALETTES["light"]
@@ -285,18 +310,26 @@ def chip(index: str, label: str, primary: bool) -> str:
         )
 
     css = theme(D) + "@media (prefers-color-scheme: light){" + theme(Lt) + "}"
-    sweep, defs = "", ts.defs()
-    if primary:
-        css += ".sw{animation:sw 5.5s cubic-bezier(.65,0,.35,1) infinite}" + keyframes(
-            "sw",
-            [(0, "transform:translateX(-40px);opacity:0"), (8, "opacity:1"),
-             (40, f"transform:translateX({fmt(W)}px);opacity:0"), (100, f"transform:translateX({fmt(W)}px);opacity:0")],
-        )
-        sweep = f'<g class="sw"><rect x="0" y="{H - 1.5}" width="40" height="1.5" fill="url(#sg)"/></g>'
-        defs += (
-            '<linearGradient id="sg" x1="0" x2="1"><stop class="sc" offset="0" stop-opacity="0"/>'
-            '<stop class="sc" offset="1"/></linearGradient>'
-        )
+    defs = ts.defs()
+    # The sweep used to belong to the primary chip alone, which left the row
+    # looking half alive. Every chip carries it now, the secondaries fainter
+    # and on their own tempo so the three never march in step.
+    css += f".sw{{animation:sw {fmt(dur)}s cubic-bezier(.65,0,.35,1) infinite}}" + keyframes(
+        "sw",
+        [(0, "transform:translateX(-40px);opacity:0"), (8, "opacity:1"),
+         (40, f"transform:translateX({fmt(W)}px);opacity:0"), (100, f"transform:translateX({fmt(W)}px);opacity:0")],
+    )
+    css += ".ix{animation:ixb 4.4s ease-in-out infinite}" + keyframes(
+        "ixb", [(0, "opacity:1"), (50, "opacity:.5"), (100, "opacity:1")]
+    )
+    sweep = (
+        f'<g opacity="{"1" if primary else ".45"}"><g class="sw">'
+        f'<rect x="0" y="{H - 1.5}" width="40" height="1.5" fill="url(#sg)"/></g></g>'
+    )
+    defs += (
+        '<linearGradient id="sg" x1="0" x2="1"><stop class="sc" offset="0" stop-opacity="0"/>'
+        '<stop class="sc" offset="1"/></linearGradient>'
+    )
     body = f'<rect class="bg" x=".5" y=".5" width="{fmt(W - 1)}" height="{H - 1}" rx="2"/>' + idx + lab + arr + sweep
     return document(W, H, body, title=label.title(), css=css, defs=defs)
 
@@ -371,20 +404,35 @@ def stratum(depth: int):
             if i < depth:
                 cells.append(f'<rect x="{gx}" y="{y - 4.5}" width="9" height="9" rx="1" fill="{p["cyan"]}" opacity=".45"/>')
             elif i == depth:
+                cells.append(
+                    f'<rect class="nowr" x="{gx}" y="{y - 4.5}" width="9" height="9" rx="1" fill="none"'
+                    f' stroke="{p["cyan"]}" stroke-width="1"/>'
+                )
                 cells.append(f'<rect class="now" x="{gx}" y="{y - 4.5}" width="9" height="9" rx="1" fill="{p["cyan"]}"/>')
             else:
                 cells.append(
                     f'<rect x="{gx + .5}" y="{y - 4}" width="8" height="8" rx="1" fill="none" {hair(p, p["hair_a"] * 1.8)}/>'
                 )
         L = 90
-        css = travel_css("pk", x_line1 - x_line0 - L, 6.5) + ".now{animation:now 2.4s ease-in-out infinite}" + keyframes(
-            "now", [(0, "opacity:1"), (50, "opacity:.35"), (100, "opacity:1")]
+        css = (
+            travel_css("pk", x_line1 - x_line0 - L, 6.5)
+            + travel_css("pk2", x_line1 - x_line0 - L, 6.5, delay=0.42)
+            + ".now{animation:now 2.4s ease-in-out infinite}"
+            + keyframes("now", [(0, "opacity:1"), (50, "opacity:.35"), (100, "opacity:1")])
+            + ".nowr{transform-box:fill-box;transform-origin:center;animation:nowr 2.4s ease-out infinite}"
+            + keyframes(
+                "nowr",
+                [(0, "transform:scale(1);opacity:.5"), (70, "transform:scale(2.3);opacity:0"),
+                 (100, "transform:scale(2.3);opacity:0")],
+            )
         )
         bloom = ' filter="url(#bl)"' if p["glow"] else ""
         defs = ts.defs() + packet_gradient(p) + (glow_filter("bl", 1.6) if p["glow"] else "")
         body = (
             idx + lab + gl
             + f'<line x1="{fmt(x_line0)}" y1="{y}" x2="{fmt(x_line1)}" y2="{y}" {hair(p)}/>'
+            + f'<g opacity=".4"><g class="pk2"><rect x="{fmt(x_line0)}" y="{fmt(y - .5)}" width="{fmt(L * .7)}"'
+            f' height="1" fill="url(#pg)"/></g></g>'
             + f'<g class="pk"><rect x="{fmt(x_line0)}" y="{y - 1}" width="{L}" height="2" fill="url(#pg)"{bloom}/></g>'
             + "".join(cells)
         )
@@ -407,10 +455,20 @@ def divider_signal(p) -> str:
             f"n{i}",
             [(0, "opacity:.35"), (max(t - 2, 0.1), "opacity:.35"), (t, "opacity:1"), (t + 10, "opacity:.35"), (100, "opacity:.35")],
         )
+        css += (
+            f".r{i}{{transform-box:fill-box;transform-origin:center;animation:r{i} {dur}s ease-out infinite}}"
+            + keyframes(
+                f"r{i}",
+                [(0, "transform:scale(.3);opacity:0"), (max(t - 0.5, 0.1), "transform:scale(.3);opacity:0"),
+                 (t, "transform:scale(.6);opacity:.8"), (t + 14, "transform:scale(3);opacity:0"),
+                 (100, "transform:scale(3);opacity:0")],
+            )
+        )
     bloom = ' filter="url(#bl)"' if p["glow"] else ""
     body = f'<line x1="0" y1="{y}" x2="{W}" y2="{y}" stroke="url(#fl)" stroke-width="1"/>'
     body += f'<g class="pk"><rect x="0" y="{y - 1}" width="{L}" height="2" fill="url(#pg)"{bloom}/></g>'
     for i, nx in enumerate(nodes):
+        body += f'<circle class="r{i}" cx="{nx}" cy="{y}" r="4" fill="none" stroke="{p["cyan"]}" stroke-width="1"/>'
         body += f'<rect class="n{i}" x="{nx - 3}" y="{y - 3}" width="6" height="6" transform="rotate(45 {nx} {y})" fill="{p["cyan"]}"/>'
     defs = packet_gradient(p) + faded_line_gradient(p, W) + (glow_filter("bl", 1.6) if p["glow"] else "")
     return document(W, H, body, title="divider", css=css, defs=defs)
@@ -422,14 +480,22 @@ def divider_wave(p) -> str:
     x0 = (W - span) / 2
     # A path longer than the window by one period, shifted by exactly one
     # period per cycle, so the loop has no seam.
-    pts = []
-    n = int((span + period) / 2) + 1
-    for i in range(n):
-        x = x0 - period + i * 2
-        pts.append(f"{fmt(x)} {fmt(y + amp * math.sin(2 * math.pi * (x - x0) / period))}")
-    wave = "M" + " L".join(pts)
+    def crest(a):
+        pts = []
+        n = int((span + period) / 2) + 1
+        for i in range(n):
+            x = x0 - period + i * 2
+            pts.append(f"{fmt(x)} {fmt(y + a * math.sin(2 * math.pi * (x - x0) / period))}")
+        return "M" + " L".join(pts)
+
+    wave, under = crest(amp), crest(amp * 0.45)
+    # A second crest drifts back the other way at its own rate: the two read
+    # as one moving surface rather than a single sliding line.
     css = ".wv{animation:wv 1.6s linear infinite}" + keyframes(
         "wv", [(0, "transform:translateX(0)"), (100, f"transform:translateX({period}px)")]
+    )
+    css += ".wv2{animation:wv2 2.9s linear infinite}" + keyframes(
+        "wv2", [(0, f"transform:translateX({period}px)"), (100, "transform:translateX(0)")]
     )
     mask = (
         f'<linearGradient id="env" gradientUnits="userSpaceOnUse" x1="{fmt(x0)}" x2="{fmt(x0 + span)}">'
@@ -441,7 +507,10 @@ def divider_wave(p) -> str:
     body = (
         f'<line x1="0" y1="{y}" x2="{fmt(x0 + 8)}" y2="{y}" stroke="url(#fl)"/>'
         f'<line x1="{fmt(x0 + span - 8)}" y1="{y}" x2="{W}" y2="{y}" stroke="url(#fl)"/>'
-        f'<g mask="url(#m)"><path class="wv" d="{wave}" fill="none" stroke="{p["cyan"]}" stroke-width="1.4"'
+        f'<g mask="url(#m)">'
+        f'<path class="wv2" d="{under}" fill="none" stroke="{p["blue"]}" stroke-width="1"'
+        f' stroke-linejoin="round" opacity=".5"/>'
+        f'<path class="wv" d="{wave}" fill="none" stroke="{p["cyan"]}" stroke-width="1.4"'
         f' stroke-linejoin="round"/></g>'
     )
     defs = faded_line_gradient(p, W) + mask
@@ -451,10 +520,11 @@ def divider_wave(p) -> str:
 def divider_scan(p) -> str:
     W, H, y = 1000, 24, 12
     dots = "".join(f"M{x} {y}h1.2" for x in range(40, W - 39, 8))
-    L = 160
-    css = travel_css("sc", W - L, 7.5, start=0)
+    L, L2 = 160, 300
+    css = travel_css("sc", W - L, 7.5, start=0) + travel_css("sc2", W - L2, 13.0, start=0)
     body = (
         f'<path d="{dots}" stroke="{p["ink_low"]}" stroke-opacity=".55" stroke-width="1.2"/>'
+        f'<g opacity=".45"><g class="sc2"><rect x="0" y="{y - 7}" width="{L2}" height="14" fill="url(#sg)"/></g></g>'
         f'<g class="sc"><rect x="0" y="{y - 5}" width="{L}" height="10" fill="url(#sg)"/>'
         f'<rect x="{L - 2}" y="{y - 6}" width="1.5" height="12" fill="{p["cyan"]}"/></g>'
     )
@@ -470,7 +540,7 @@ def divider_pulse(p) -> str:
     cx = W / 2
     css = (
         ".rg{transform-box:fill-box;transform-origin:center;animation:rg 3.2s ease-out infinite}"
-        ".rg2{animation-delay:1.6s}"
+        ".rg2{animation-delay:1.07s}.rg3{animation-delay:2.13s}"
         + keyframes("rg", [(0, "transform:scale(1);opacity:.8"), (70, "transform:scale(3.4);opacity:0"), (100, "transform:scale(3.4);opacity:0")])
         + ".ar{transform-box:fill-box;animation:ar 3.2s cubic-bezier(.16,1,.3,1) infinite}"
         + ".arl{transform-origin:right center}.arr{transform-origin:left center}"
@@ -483,6 +553,7 @@ def divider_pulse(p) -> str:
         f'<rect class="ar arr" x="{fmt(cx + 14)}" y="{y - .75}" width="200" height="1.5" fill="url(#gr)"/>'
         f'<circle class="rg" cx="{fmt(cx)}" cy="{y}" r="3" fill="none" stroke="{p["cyan"]}"/>'
         f'<circle class="rg rg2" cx="{fmt(cx)}" cy="{y}" r="3" fill="none" stroke="{p["cyan"]}"/>'
+        f'<circle class="rg rg3" cx="{fmt(cx)}" cy="{y}" r="3" fill="none" stroke="{p["cyan"]}"/>'
         f'<circle cx="{fmt(cx)}" cy="{y}" r="3" fill="{p["cyan"]}"/>'
     )
     defs = faded_line_gradient(p, W) + (
@@ -507,13 +578,20 @@ def divider_orbit(p) -> str:
             stops.append((100 * i / n, f"transform:translate({fmt(x - cx)}px,{fmt(yy - y)}px);opacity:{'.35' if behind else '1'}"))
         return f".{cls}{{animation:{cls} {dur}s linear infinite}}" + keyframes(cls, stops)
 
-    css = orbit_css("o1", 0) + orbit_css("o2", n // 2)
+    css = (
+        orbit_css("o1", 0) + orbit_css("o2", n // 2)
+        + orbit_css("o1t", -2) + orbit_css("o1u", -4)
+        + orbit_css("o2t", n // 2 - 2)
+    )
     body = (
         f'<line x1="0" y1="{y}" x2="{fmt(cx - a - 16)}" y2="{y}" stroke="url(#fl)"/>'
         f'<line x1="{fmt(cx + a + 16)}" y1="{y}" x2="{W}" y2="{y}" stroke="url(#fl)"/>'
         f'<ellipse cx="{fmt(cx)}" cy="{y}" rx="{a}" ry="{b}" fill="none" {hair(p, p["hair_a"] * 1.6)}/>'
         f'<circle cx="{fmt(cx)}" cy="{y}" r="2.5" fill="{p["ink_mid"]}"/>'
+        f'<circle class="o1u" cx="{fmt(cx)}" cy="{y}" r="1.1" fill="{p["cyan"]}" opacity=".22"/>'
+        f'<circle class="o1t" cx="{fmt(cx)}" cy="{y}" r="1.8" fill="{p["cyan"]}" opacity=".45"/>'
         f'<circle class="o1" cx="{fmt(cx)}" cy="{y}" r="2.6" fill="{p["cyan"]}"/>'
+        f'<circle class="o2t" cx="{fmt(cx)}" cy="{y}" r="1.2" fill="{p["blue"]}" opacity=".4"/>'
         f'<circle class="o2" cx="{fmt(cx)}" cy="{y}" r="1.8" fill="{p["blue"]}"/>'
     )
     return document(W, H, body, title="divider", css=css, defs=faded_line_gradient(p, W))
@@ -1156,12 +1234,20 @@ def footer(p) -> str:
         ".rp{transform-box:fill-box;transform-origin:center;animation:rp 4.8s ease-out infinite}"
         + keyframes("rp", [(0, "transform:scale(.2);opacity:0"), (50, "transform:scale(.2);opacity:0"), (52, "transform:scale(.3);opacity:.9"), (92, "transform:scale(1);opacity:0"), (100, "transform:scale(1);opacity:0")])
     )
+    css.append(".dr2{animation:dr 4.8s cubic-bezier(.55,0,.8,.4) -2.4s infinite}")
+    css.append(".rp2{transform-box:fill-box;transform-origin:center;animation:rp 4.8s ease-out -2.4s infinite}")
     glow = ' filter="url(#bl)"' if p["glow"] else ""
     packet = (
+        f'<g opacity=".45"><g class="dr2"><rect x="{cx - 1}" y="-14" width="1.4" height="18" fill="url(#dg)"/>'
+        f'<circle cx="{cx}" cy="4" r="1.8" fill="{p["cyan_soft"]}"/></g></g>'
         f'<g class="dr"><rect x="{cx - 1}" y="-18" width="2" height="22" fill="url(#dg)"/>'
         f'<circle cx="{cx}" cy="4" r="2.6" fill="{p["cyan_soft"]}"{glow}/></g>'
     )
-    ripple = f'<ellipse class="rp" cx="{cx}" cy="{ys[-1]}" rx="120" ry="9" fill="none" stroke="{p["cyan"]}" stroke-width="1.2"/>'
+    ripple = (
+        f'<ellipse class="rp" cx="{cx}" cy="{ys[-1]}" rx="120" ry="9" fill="none" stroke="{p["cyan"]}" stroke-width="1.2"/>'
+        f'<ellipse class="rp2" cx="{cx}" cy="{ys[-1]}" rx="120" ry="9" fill="none" stroke="{p["cyan"]}"'
+        f' stroke-width="1" opacity=".5"/>'
+    )
 
     name = DISPLAY.shape("SAGAR TAILOR")
     nm_size = 17
@@ -1213,12 +1299,12 @@ def toolkit_strip() -> None:
 
 
 # ==========================================================================
-# TEAM FIGURES
+# APIX AND ADITYANET
 #
-# Two projects whose repository sits with the team lead; each figure draws
-# the part of the system I own inside the team, and nothing it cannot
-# support. APIx collects, checks, and then declines to publish an index;
-# AdityaNet parses the HEL1OS archive orbit by orbit.
+# Both were built with a team. The APIx repository is mine; AdityaNet's sits
+# with the team lead, and each figure says which on its own face. APIx
+# collects, checks, and then declines to publish an index; AdityaNet parses
+# the HEL1OS archive orbit by orbit.
 # ==========================================================================
 
 
@@ -1359,7 +1445,7 @@ def project_apix(p) -> str:
     # --- Frame -------------------------------------------------------------
     head_l, _ = ts.text(MONO, "COLLECTION PATH · ILLUSTRATIVE", 36, 36, 11, p["ink_low"], tracking=0.12)
     head_r, _ = ts.text(
-        MONO_BOLD, "TEAM PROJECT · LEAD REXY-5097", W - 36, 36, 11, p["ink_mid"], anchor="end", tracking=0.2
+        MONO_BOLD, "SLAZYVERSE/APIX · MIT", W - 36, 36, 11, p["ink_mid"], anchor="end", tracking=0.2
     )
     rule = f'<line x1="36" y1="48" x2="{W - 36}" y2="48" {hair(p)}/>'
     b_lab, _ = ts.text(MONO, "EXECUTION BOUNDARY", bx, 78, 10.5, p["ink_low"], anchor="middle", tracking=0.1)
@@ -1554,12 +1640,12 @@ def main() -> None:
     emit("system", "core", system_core)
     emit("hero", "name", hero)
     emit("hero", "headline", headline)
-    for stem, index, label, primary in (
-        ("github", "01", "GITHUB", False),
-        ("portfolio", "02", "PORTFOLIO", True),
-        ("linkedin", "03", "LINKEDIN", False),
+    for stem, index, label, primary, dur in (
+        ("github", "01", "GITHUB", False, 6.7),
+        ("portfolio", "02", "PORTFOLIO", True, 5.5),
+        ("linkedin", "03", "LINKEDIN", False, 7.9),
     ):
-        write(os.path.join(ASSETS, "links", f"{stem}.svg"), chip(index, label, primary))
+        write(os.path.join(ASSETS, "links", f"{stem}.svg"), chip(index, label, primary, dur))
     for depth, (index, name, _) in enumerate(STRATA):
         emit("dividers", f"stratum-{index}-{name.lower()}", stratum(depth))
     emit("dividers", "signal", divider_signal)
